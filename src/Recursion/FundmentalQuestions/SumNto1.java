@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 public class SumNto1 {
     public static void main(String[] args) {

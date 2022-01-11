@@ -2,7 +2,7 @@
 // example :- 0 1 1 2 3 5 8 13 .....n
 // formula 0 ,1  n = (n-1) + (n-2)
 
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 import java.util.Scanner;
 

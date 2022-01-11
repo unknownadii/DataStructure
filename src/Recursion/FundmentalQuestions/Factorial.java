@@ -1,6 +1,6 @@
 // Factorial of a Number
 
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 public class Factorial {
 

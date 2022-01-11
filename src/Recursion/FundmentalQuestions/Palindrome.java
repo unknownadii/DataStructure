@@ -1,5 +1,5 @@
 // Same as Reverse a Number
-package Recursion;
+package Recursion.FundmentalQuestions;
 public class Palindrome {
     public static void main(String[] args) {
         System.out.println(palindrome(121));

@@ -5,7 +5,7 @@ Ex:- 1234
 Answer = 10
  */
 
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 public class SumOfDigit {
     public static void main(String[] args) {

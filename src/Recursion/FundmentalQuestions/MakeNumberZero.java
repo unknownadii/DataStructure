@@ -4,7 +4,7 @@ Condition = In one step , if the number is even divide it with 0 , otherwise
 Subtract it with 1
  */
 
-package Recursion;
+package Recursion.FundmentalQuestions;
 public class MakeNumberZero {
     public static void main(String[] args) {
         System.out.println(stepsToZero(5));

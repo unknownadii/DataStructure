@@ -1,7 +1,7 @@
 // find the middle element then check with target value if it matches then return mid value
 // if not in mid then check in left and right.
 
-package Recursion;
+package Recursion.FundmentalQuestions;
 public class BinarySearchWithRecursion {
     public static void main(String[] args) {
         int[] arr = {1,5,9,44,56,78,211};

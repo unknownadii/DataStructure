@@ -1,5 +1,5 @@
 // Do it with out converting it in to String
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 public class ReverseNumber {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Recursion;
+package Recursion.FundmentalQuestions;
 
 public class Print_1toN {
     public static void main(String[] args) {
