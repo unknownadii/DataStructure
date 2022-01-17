@@ -1,7 +1,6 @@
 package Recursion.Array;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class LinearSearch {
     public static void main(String[] args) {
@@ -9,8 +8,20 @@ public class LinearSearch {
         System.out.println(linearSearch(arr, 9, 0));
         System.out.println("First Index:" + linearSearchFirstIndex(arr, 9, 0));
         System.out.println("Last Index:" + linearSearchLastIndex(arr, 9, arr.length - 1));
+
+        // Returning Arraylist
+        // Method 1
         linearSearchAllIndex(arr, 9, 0);
         System.out.println(list);
+        //Method 2
+        System.out.println(linearSearchAllIndexReturnBtArrayList(arr, 9, 0, new ArrayList<>()));
+        // Method 2 OR
+        ArrayList<Integer> list = new ArrayList<>();
+        System.out.println(linearSearchAllIndexReturnBtArrayList(arr, 9, 0, list));
+        // Method 3 With out Passing ArrayList while function call
+        System.out.println(linearSearchAllIndexReturnBtArrayList2(arr, 9, 0));
+        System.out.println(linearSearchAllIndexReturnBtArrayList2Method2(arr, 9, 0));
+
     }
 
     static Boolean linearSearch(int[] arr, int target, int n) {
@@ -55,4 +66,44 @@ public class LinearSearch {
         }
         linearSearchAllIndex(arr, target, n + 1);
     }
+
+    //type 1
+    static ArrayList linearSearchAllIndexReturnBtArrayList(int[] arr, int target, int n, ArrayList<Integer> list) {
+        if (n == arr.length) {
+            return list;
+        }
+        if (target == arr[n]) {
+            list.add(n);
+        }
+        return linearSearchAllIndexReturnBtArrayList(arr, target, n + 1, list);
+    }
+
+    //type 2
+    static ArrayList linearSearchAllIndexReturnBtArrayList2(int[] arr, int target, int n) {
+        ArrayList<Integer> list;
+        if (n == arr.length) {
+            return new ArrayList<>();
+        }
+        if (target == arr[n]) {
+            list = linearSearchAllIndexReturnBtArrayList2(arr, target, n + 1);
+            list.add(n);
+            return list;
+        }
+        return linearSearchAllIndexReturnBtArrayList2(arr, target, n + 1);
+    }
+
+    // type 2 method 2
+    static ArrayList linearSearchAllIndexReturnBtArrayList2Method2(int[] arr, int target, int n) {
+        ArrayList<Integer> list = new ArrayList<>();
+        if (n == arr.length) {
+            return list;
+        }
+        if (target == arr[n]) {
+            list.add(n);
+        }
+        ArrayList<Integer> incomingListFromBelow = linearSearchAllIndexReturnBtArrayList2Method2(arr, target, n + 1);
+        list.addAll(incomingListFromBelow);
+        return list;
+    }
+
 }
