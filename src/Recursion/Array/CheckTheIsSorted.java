@@ -2,9 +2,10 @@ package Recursion.Array;
 
 public class CheckTheIsSorted {
     public static void main(String[] args) {
-        int[] arr = {1,2,4,6,7,8,9,223,44,44};
+        int[] arr = {1,2,4,6,7,8,9,22,44,44};
         System.out.println(isSorted2(arr,0));
     }
+
     //Method 1
     static Boolean isSorted(int[] arr, int i)
     {
@@ -18,6 +19,7 @@ public class CheckTheIsSorted {
         }
       return false;
     }
+
     //Method 2
     static boolean isSorted2(int arr[],int n)
     {
@@ -25,6 +27,6 @@ public class CheckTheIsSorted {
         {
             return true;
         }
-        return arr[n] < arr[n+1] && isSorted2(arr,n+1);
+        return arr[n] <= arr[n+1] && isSorted2(arr,n+1);
     }
 }
