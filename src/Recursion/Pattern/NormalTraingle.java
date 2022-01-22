@@ -19,10 +19,13 @@ public class NormalTraingle {
         if (r==0) {
             return;
         }
+        // for current Row
         if (c < r) {
             traingle(r,c+1);
             System.out.print("*");
-        } else {
+        }
+        // for changing Row
+        else {
             traingle(r-1,0);
             System.out.println();
         }
