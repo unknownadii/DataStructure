@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] arr = { 2, 11, 5, 39, 7, 0, 4, 5, 2, 3, 8, 0};
+        int[] arr = {4,3,2 ,0,0,0,0,0,0,0,0,1,6};
         selectionSort(arr,arr.length,0,0);
         System.out.println(Arrays.toString(arr));
     }
-    static void selectionSort(int arr[],int r ,int c,int max)
+    static void selectionSort(int[] arr,int r ,int c,int max)
     {
         if (r==0)
         {
@@ -21,7 +21,11 @@ public class SelectionSort {
             {
                 selectionSort(arr,r,c+1,c);
             }
-            selectionSort(arr,r,c+1,max);
+            else
+            {
+                // put this recursion in else or it will run every time after leaving the if condition brackets
+                selectionSort(arr,r,c+1,max);
+            }
         }
         // for Row change
         else {
