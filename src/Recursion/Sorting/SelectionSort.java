@@ -6,6 +6,8 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] arr = {4,3,2 ,0,0,0,0,0,0,0,0,1,6};
         selectionSort(arr,arr.length,0,0);
+        // Note if we are passing arr then change in its actual value takes place
+        // but if pass the any string or integer thing then there will no effect on its real value. like question :- RemoveAFromString.java
         System.out.println(Arrays.toString(arr));
     }
     static void selectionSort(int[] arr,int r ,int c,int max)
@@ -38,3 +40,4 @@ public class SelectionSort {
         }
     }
 }
+
