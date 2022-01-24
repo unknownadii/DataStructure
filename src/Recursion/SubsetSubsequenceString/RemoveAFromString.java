@@ -10,6 +10,7 @@ public class RemoveAFromString {
     public static void main(String[] args) {
         String Str = "adedsaadrdaaffga";
         System.out.println(removeA(Str, 0));
+        System.out.println(removeA2(Str));
         removeA1(Str, "");
         // there is no effect takes place on String Str
         System.out.println(Str);
@@ -39,6 +40,19 @@ public class RemoveAFromString {
             removeA1(str.substring(1), ans);
         } else {
             removeA1(str.substring(1), ans + ch);
+        }
+    }
+
+    // Method 2 with return type
+    static String removeA2(String str) {
+        if (str.isEmpty()) {
+            return " ";
+        }
+        char ch = str.charAt(0);
+        if (ch == 'a') {
+           return removeA2(str.substring(1));
+        } else {
+            return ch + removeA2(str.substring(1));
         }
     }
 }
