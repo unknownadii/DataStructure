@@ -1,6 +1,6 @@
 package Recursion.SubsetSubsequenceString.SubsetAnsSubsequence;
 
-public class SubsequenceOfabc {
+public class SubsequenceOfabcAddInArrayList {
     public static void main(String[] args) {
         subSequence("abc","");
     }
