@@ -1,4 +1,4 @@
-package Recursion.SubsetSubsequenceString;
+package Recursion.SubsetSubsequenceString.StringFundamental;
 
 /*
 example - bbaccaxsxaxd remove all "a" from thid String

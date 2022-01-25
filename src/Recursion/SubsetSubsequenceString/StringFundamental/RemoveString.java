@@ -1,4 +1,4 @@
-package Recursion.SubsetSubsequenceString;
+package Recursion.SubsetSubsequenceString.StringFundamental;
 
 public class RemoveString {
     public static void main(String[] args) {
