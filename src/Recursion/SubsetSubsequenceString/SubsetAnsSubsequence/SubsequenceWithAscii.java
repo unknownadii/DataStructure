@@ -3,6 +3,9 @@ package Recursion.SubsetSubsequenceString.SubsetAnsSubsequence;
 public class SubsequenceWithAscii {
     public static void main(String[] args) {
         subSequenceAscii("abc","");
+        // How to find the ascci of a number ?
+        char c = 'a';
+        System.out.println(c + 0 ); //it will all ascii cide of 'a' with 0
     }
 
     static void subSequenceAscii(String pro ,String store)
