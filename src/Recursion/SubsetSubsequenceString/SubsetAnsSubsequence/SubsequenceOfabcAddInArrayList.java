@@ -7,7 +7,7 @@ public class SubsequenceOfabcAddInArrayList {
         ArrayList<String> arr = new ArrayList<>();
         subSequence("abc", "", arr);
         System.out.println(arr);
-        System.out.println(subSequence2("abc",""));
+        System.out.println(subSequence2("abcd",""));
     }
 
     static void subSequence(String pro, String store, ArrayList<String> arrlist) {
