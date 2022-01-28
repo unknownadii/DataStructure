@@ -2,7 +2,7 @@ package Recursion.SubsetSubsequenceString.Permutation;
 
 public class CountNoOfPermutations {
     public static void main(String[] args) {
-        System.out.print(count("","abc"));
+        System.out.println(count("","abc"));
     }
 
     static int count(String processed, String unProcessed) {
@@ -18,4 +18,5 @@ public class CountNoOfPermutations {
         }
         return count;
     }
+
 }
