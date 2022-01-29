@@ -1,6 +1,4 @@
-package Backtracking.Foundation;
-
-import java.util.ArrayList;
+package Backtracking.FoundationBacktrackingButUsingRecursionToSolve;
 
 /*
 Source = (3,3)
