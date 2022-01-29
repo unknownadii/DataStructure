@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class DiceRollFaceGiven {
     public static void main(String[] args) {
         dice("", 9,20);
-        System.out.println(diceReturnArrayList("", 4,6));
+        System.out.println(diceReturnArrayList("", 9,20));
+        System.out.println(count("", 9,20));
     }
 
     static void dice(String pro, int target,int face) {
@@ -30,5 +31,16 @@ public class DiceRollFaceGiven {
             s.addAll(str);
         }
         return s;
+    }
+    //return count
+    static int count(String pro, int target,int face) {
+        if (target == 0) {
+            return 1;
+        }
+        int c = 0;
+        for (int i = 1; i <= face && i <= target; i++) {
+            c = c + count(pro + i, target - i ,face);
+        }
+        return c;
     }
 }
