@@ -1,4 +1,4 @@
-package Recursion.CompanyQuestions;
+package Recursion.SubsetSubsequenceString.Permutation.CompanyQuestions;
 
 public class countTotalNumberInLetterGeneratedByPHone {
     public static void main(String[] args) {
