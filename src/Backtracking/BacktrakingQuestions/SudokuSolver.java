@@ -14,7 +14,6 @@ public class SudokuSolver {
                 {0, 0, 0, 0, 0, 0, 0, 7, 4},
                 {0, 0, 5, 2, 0, 6, 3, 0, 0}
         };
-
         if (solve(board)) {
             display(board);
         } else {
@@ -51,7 +50,7 @@ public class SudokuSolver {
             // soduko is solved
         }
 
-        // backtrack
+        // backtrack check the number from 1 to 9 by placing at position row and col of board
         for (int number = 1; number <= 9; number++) {
             if (isSafe(board, row, col, number)) {
                 board[row][col] = number;
