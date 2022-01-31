@@ -18,7 +18,7 @@ public class FibonaciiNumber {
         {
             return n;
         }
-        return fibonocii(n-1)+fibonocii(n-2);
+        return fibonocii(n-1) + fibonocii(n-2);
     }
 }
 // output :- It will gives the nth fibonacci number
