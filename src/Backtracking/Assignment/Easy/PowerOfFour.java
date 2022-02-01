@@ -4,5 +4,8 @@ public class PowerOfFour {
     public static void main(String[] args) {
 
     }
-    s
+
+    static void powerOfThree(int n) {
+
+    }
 }
