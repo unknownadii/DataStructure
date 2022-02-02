@@ -1,5 +1,7 @@
 package LinkedList;
 
+import javax.management.StandardMBean;
+
 public class LL {
 
     private Node head;
@@ -51,6 +53,7 @@ public class LL {
             temp = temp.next;
         }
         temp.next = node;
+        tail = node;//just updating the tail
         size++;
     }
 
@@ -76,6 +79,41 @@ public class LL {
         size++;
     }
 
+    public int deleteFirst() {
+        if (size == 0 || head == null) {
+            System.out.println("No Element To Delete");
+            return -1;
+        }
+        int retVal = head.val;
+        head = head.next;
+        //if one element is remaining on list
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return retVal;
+    }
+
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        }
+
+        Node temp = getIndex(size-2);
+        int value = tail.val;
+        tail =temp;
+        tail.next =null;
+        size--;
+        return value;
+    }
+
+    public Node getIndex(int index) {
+        Node node = head;
+        for (int i=0;i<index;i++) {
+            node=node.next;
+        }
+        return node;
+    }
     class Node {
         private int val;
         private Node next;

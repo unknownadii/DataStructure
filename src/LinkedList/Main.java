@@ -15,5 +15,9 @@ public class Main {
         list.insert(22,100);
         list.insert(22,3);
         list.display();
+       // System.out.println(list.deleteFirst());
+       // list.display();
+        System.out.println(list.deleteLast());
+        list.display();
     }
 }
