@@ -55,7 +55,6 @@ public class LL {
     }
 
     public void insert(int val, int index) {
-        Node node = new Node(val);
         if (index == 0 || head == null) {
             insertFirst(val);
             return;
@@ -72,9 +71,8 @@ public class LL {
         for (int i = 1; i < index; i++) {
             temp = temp.next;
         }
-        Node helper = temp.next;
+        Node node = new Node(val, temp.next);
         temp.next = node;
-        node.next = helper;
         size++;
     }
 
