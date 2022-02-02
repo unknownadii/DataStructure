@@ -99,21 +99,35 @@ public class LL {
             return deleteFirst();
         }
 
-        Node temp = getIndex(size-2);
+        Node temp = getIndex(size - 2);
         int value = tail.val;
-        tail =temp;
-        tail.next =null;
+        tail = temp;
+        tail.next = null;
         size--;
         return value;
     }
 
+    public int delete(int index) {
+        if (index == 0) {
+            return deleteFirst();
+        }
+        if (index == size - 1) {
+            return deleteLast();
+        }
+        Node pre = getIndex(index - 1);
+        int value = pre.next.val;
+       pre.next=pre.next.next;
+       return value;
+    }
+
     public Node getIndex(int index) {
         Node node = head;
-        for (int i=0;i<index;i++) {
-            node=node.next;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
         }
         return node;
     }
+
     class Node {
         private int val;
         private Node next;

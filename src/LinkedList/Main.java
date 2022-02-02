@@ -12,12 +12,16 @@ public class Main {
         list.display();
         list.insertLastByHead(100);
         list.display();
-        list.insert(22,100);
-        list.insert(22,3);
+        list.insert(22, 100);
+        list.insert(22, 3);
         list.display();
-       // System.out.println(list.deleteFirst());
-       // list.display();
+
+        //delete
+        System.out.println(list.deleteFirst());
+        list.display();
         System.out.println(list.deleteLast());
+        list.display();
+        System.out.println(list.delete(2));
         list.display();
     }
 }
