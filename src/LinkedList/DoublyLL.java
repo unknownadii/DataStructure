@@ -14,6 +14,50 @@ public class DoublyLL {
         head = node;
     }
 
+    public void insertLast(int value) {
+        Node node = new Node(value);
+        Node last = head;
+        if (head == null) {
+            head = node;
+            return;
+        }
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = node;
+        node.pre = last;
+
+    }
+
+
+    public Node find(int value) {
+        Node node = head;
+        while (node != null) {
+            if (node.val == value) {
+                return node;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
+    public void insert(int after, int val) {
+        Node p = find(after);
+
+        if (p == null) {
+            System.out.println("does not exist");
+            return;
+        }
+
+        Node node = new Node(val);
+        node.next = p.next;
+        p.next = node;
+        node.pre = p;
+        if (node.next != null) {
+            node.next.pre = node;
+        }
+    }
+
     public void display() {
         Node temp = head;
         while (temp != null) {
@@ -31,9 +75,9 @@ public class DoublyLL {
             last = temp;
             temp = temp.next;
         }
-        while (last!=null) {
-            System.out.print(last.val+"->");
-            last= last.pre;
+        while (last != null) {
+            System.out.print(last.val + "->");
+            last = last.pre;
         }
         System.out.println("START");
     }
