@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+Given an array of distinct integers candidates and a target integer target,
+return a list of all unique combinations of candidates where the chosen numbers sum to target.
+ You may return the combinations in any order.
 
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The same number may be chosen from candidates an unlimited number of times.
+Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 
-It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations
+for the given input.
 
 
 
@@ -31,11 +35,13 @@ Output: []
  */
 public class CombinationSum {
     public static void main(String[] args) {
-        int arr[]= {2,2,2,5};
-        System.out.println(combinationSum(arr,7));
+        int arr[] = {2, 2, 2, 5};
+        System.out.println(combinationSum(arr, 7));
     }
+
     static List<List<Integer>> ml;
-    public static List<List<Integer>> combinationSum ( int[] candidates, int target){
+
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         //main list to store combinations.
         ml = new ArrayList<>();
         //Starting index is 0, then we will make two calls, one call will be when we pick that element,
@@ -43,6 +49,7 @@ public class CombinationSum {
         findCombinations(candidates, 0, target, new ArrayList<>());
         return ml;
     }
+
     public static void findCombinations(int[] arr, int idx, int target, List<Integer> cl) {
         //If target becomes 0, then we will add the combination in the main list and return.
         //If index becomes equal to the length of the array, and target is not equal to 0, then simply return.
