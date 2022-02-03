@@ -121,13 +121,13 @@ public class LL {
 
     public int find(int value) {
         Node node = head;
-        int count =0;
+        int count = 0;
         while (node != null) {
-           if (node.val == value) {
-               return count;
-           }
-           node=node.next;
-           count++;
+            if (node.val == value) {
+                return count;
+            }
+            node = node.next;
+            count++;
         }
         return -1;
     }
