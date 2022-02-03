@@ -141,7 +141,7 @@ public class LL {
         System.out.println("END");
     }
 
-    class Node {
+    private class Node {
         private int val;
         private Node next;
 
