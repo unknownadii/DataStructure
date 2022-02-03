@@ -30,7 +30,7 @@ public class Main {
         System.out.println(list.find(129));
          */
 
-        DoublyLL list = new DoublyLL();
+       /* DoublyLL list = new DoublyLL();
         list.insertFirst(33);
         list.insertFirst(12);
         list.insertFirst(21);
@@ -39,5 +39,16 @@ public class Main {
         list.insert(21,23);
         list.display();
         list.displayReverse();
+
+        */
+
+        CircularLL list = new CircularLL();
+        list.insert(23);
+        list.insert(3);
+        list.insert(19);
+        list.insert(75);
+        list.display();
+        list.delete(19);
+        list.display();
     }
 }
