@@ -1,10 +1,8 @@
 package LinkedList.Implementation;
 
-import javax.management.StandardMBean;
-
 public class LL {
 
-    public Node head;
+    private Node head;
     private Node tail;
     public int size;
 
@@ -68,20 +66,6 @@ public class LL {
         Node node = new Node(val, temp.next);
         temp.next = node;
         size++;
-    }
-
-    public void insertByRecursion(int value, int index) {
-        head = helperInsert(value, index, head);
-    }
-
-    private Node helperInsert(int val, int index, Node node) {
-        if (index == 0) {
-            Node temp = new Node(val, node);
-            size++;
-            return temp;
-        }
-        node.next = helperInsert(val, index - 1, node.next);
-        return node;
     }
 
     public int deleteFirst() {
@@ -170,7 +154,25 @@ public class LL {
     }
 
     /*
-    QUESTIONS :- Leetcode
+    QUESTIONS 1 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     */
+
+    public void insertByRecursion(int value, int index) {
+        head = helperInsert(value, index, head);
+    }
+
+    private Node helperInsert(int val, int index, Node node) {
+        if (index == 0) {
+            Node temp = new Node(val, node);
+            size++;
+            return temp;
+        }
+        node.next = helperInsert(val, index - 1, node.next);
+        return node;
+    }
+    /*
+    QUESTIONS 2 :- Leetcode
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      */
 

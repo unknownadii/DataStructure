@@ -29,10 +29,6 @@ public class Main {
         //find
         System.out.println(list.find(129));
 
-        //insert by Recusion
-        list.insertByRecursion(121,2);
-        list.display();
-
 
        /* DoublyLL list = new DoublyLL();
         list.insertFirst(33);
