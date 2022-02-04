@@ -4,7 +4,7 @@ import javax.management.StandardMBean;
 
 public class LL {
 
-    private Node head;
+    public Node head;
     private Node tail;
     public int size;
 
@@ -75,12 +75,12 @@ public class LL {
     }
 
     private Node helperInsert(int val, int index, Node node) {
-        if (index==0) {
-            Node temp = new Node(val,node);
+        if (index == 0) {
+            Node temp = new Node(val, node);
             size++;
             return temp;
         }
-        node.next=helperInsert(val,index-1,node.next);
+        node.next = helperInsert(val, index - 1, node.next);
         return node;
     }
 
@@ -155,7 +155,7 @@ public class LL {
         System.out.println("END");
     }
 
-    private class Node {
+    public class Node {
         private int val;
         private Node next;
 
@@ -169,4 +169,23 @@ public class LL {
         }
     }
 
+    /*
+    QUESTIONS :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     */
+
+    public void removeDuplicate() {
+        Node node = head;
+        while (node.next !=null) {
+            if (node.val == node.next.val) {
+                node.next= node.next.next;
+                size--;
+            }
+            else {
+                node=node.next;
+            }
+        }
+        tail=node;
+        tail.next=null;
+    }
 }
