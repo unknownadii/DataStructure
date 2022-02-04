@@ -248,12 +248,46 @@ public class LL {
                 Node temp = slowPointer;
                 int l = 0;
                 do {
-                    temp=temp.next;
+                    temp = temp.next;
                     l++;
-                } while (temp!=slowPointer);
+                } while (temp != slowPointer);
                 return l;
             }
         }
         return 0;
+    }
+
+    /*
+  QUESTIONS 5 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   */
+    public Node returnLLCycleStartingNode() {
+        int length = 0;
+        Node fastPointer = head;
+        Node slowPointer = head;
+        while (fastPointer != null && fastPointer.next != null) {
+            fastPointer = fastPointer.next.next;//increment of two steps
+            slowPointer = slowPointer.next;
+            if (fastPointer == slowPointer) {
+                length = LLCycleLength();
+                break;
+            }
+        }
+        if (length==0) {
+            return null;
+        }
+        //find the Start Node
+        Node firstNode = head;
+        Node secondNode = head;
+        //moving the second node K-times(length of cycle in list) away from first node
+        while (length > 0) {
+            secondNode=secondNode.next;
+            length--;
+        }
+        while (firstNode != secondNode) {
+            firstNode=firstNode.next;
+            secondNode=secondNode.next;
+        }
+            return firstNode; // Or return secondNode;
     }
 }

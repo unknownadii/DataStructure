@@ -2,10 +2,7 @@ package LinkedList.Questions;
 
 import LinkedList.Implementation.LL;
 
-/*
-Question link :- https://leetcode.com/problems/linked-list-cycle/
- */
-public class LinkedListCycle {
+public class LL2ReturnStartOfCycleNode {
     public static void main(String[] args) {
         LL list = new LL();
         list.insertLast(1);
@@ -17,5 +14,6 @@ public class LinkedListCycle {
         list.display();
         System.out.println(list.LLCycle());
         System.out.println(list.LLCycleLength());//
+        System.out.println(list.returnLLCycleStartingNode());
     }
 }
