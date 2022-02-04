@@ -1,8 +1,11 @@
-package LinkedList.Questions;
+package LinkedList.Questions.TwoPointersFastAndSlow;
 
 import LinkedList.Implementation.LL;
 
-public class LL2ReturnStartOfCycleNode {
+/*
+Question link :- https://leetcode.com/problems/linked-list-cycle/
+ */
+public class LinkedListCycle {
     public static void main(String[] args) {
         LL list = new LL();
         list.insertLast(1);
@@ -14,6 +17,5 @@ public class LL2ReturnStartOfCycleNode {
         list.display();
         System.out.println(list.LLCycle());
         System.out.println(list.LLCycleLength());//
-        System.out.println(list.returnLLCycleStartingNode());
     }
 }

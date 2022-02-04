@@ -1,4 +1,4 @@
-package LinkedList.Questions;
+package LinkedList.Questions.TwoPointersFastAndSlow;
 
 /*
 202. Happy Number
