@@ -178,16 +178,44 @@ public class LL {
 
     public void removeDuplicate() {
         Node node = head;
-        while (node.next !=null) {
+        while (node.next != null) {
             if (node.val == node.next.val) {
-                node.next= node.next.next;
+                node.next = node.next.next;
                 size--;
-            }
-            else {
-                node=node.next;
+            } else {
+                node = node.next;
             }
         }
-        tail=node;
-        tail.next=null;
+        tail = node;
+        tail.next = null;
+    }
+       /*
+    QUESTIONS 3 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     */
+
+    public static LL mergeTwoSortedLL(LL f, LL s) {
+        Node fh = f.head;
+        Node sh = s.head;
+        LL ans = new LL();
+        while (fh != null && sh != null) {
+            if (fh.val < sh.val) {
+                ans.insertLast(fh.val);
+                fh = fh.next;
+            } else {
+                ans.insertLast(sh.val);
+                sh = sh.next;
+            }
+        }
+
+        while (fh != null) {
+            ans.insertLast(fh.val);
+            fh = fh.next;
+        }
+        while (sh != null) {
+            ans.insertLast(sh.val);
+            sh = sh.next;
+        }
+        return ans;
     }
 }
