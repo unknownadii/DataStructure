@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.Implementation;
 
 import javax.management.StandardMBean;
 

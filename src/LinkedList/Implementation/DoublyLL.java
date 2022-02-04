@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.Implementation;
 
 public class DoublyLL {
 
