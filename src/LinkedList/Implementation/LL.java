@@ -224,12 +224,12 @@ public class LL {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
      */
 
-    public  boolean LLCycle() {
+    public boolean LLCycle() {
         Node fastPointer = head;
         Node slowPointer = head;
-        while (fastPointer!=null && fastPointer.next != null) {
-            fastPointer=fastPointer.next.next;//increment of two steps
-            slowPointer=slowPointer.next;
+        while (fastPointer != null && fastPointer.next != null) {
+            fastPointer = fastPointer.next.next;//increment of two steps
+            slowPointer = slowPointer.next;
             if (fastPointer == slowPointer) {
                 return true;
             }
@@ -237,4 +237,23 @@ public class LL {
         return false;
     }
 
+    //It will return the length of the cycle in list
+    public int LLCycleLength() {
+        Node fastPointer = head;
+        Node slowPointer = head;
+        while (fastPointer != null && fastPointer.next != null) {
+            fastPointer = fastPointer.next.next;//increment of two steps
+            slowPointer = slowPointer.next;
+            if (fastPointer == slowPointer) {
+                Node temp = slowPointer;
+                int l = 0;
+                do {
+                    temp=temp.next;
+                    l++;
+                } while (temp!=slowPointer);
+                return l;
+            }
+        }
+        return 0;
+    }
 }

@@ -15,6 +15,6 @@ public class LinkedListCycle {
         list.insertLast(3);
         list.display();
         System.out.println(list.LLCycle());
-
+        System.out.println(list.LLCycleLength());//
     }
 }
