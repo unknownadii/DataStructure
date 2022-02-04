@@ -218,4 +218,23 @@ public class LL {
         }
         return ans;
     }
+
+     /*
+    QUESTIONS 4 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     */
+
+    public  boolean LLCycle() {
+        Node fastPointer = head;
+        Node slowPointer = head;
+        while (fastPointer!=null && fastPointer.next != null) {
+            fastPointer=fastPointer.next.next;//increment of two steps
+            slowPointer=slowPointer.next;
+            if (fastPointer == slowPointer) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
