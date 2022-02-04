@@ -70,6 +70,20 @@ public class LL {
         size++;
     }
 
+    public void insertByRecursion(int value, int index) {
+        head = helperInsert(value, index, head);
+    }
+
+    private Node helperInsert(int val, int index, Node node) {
+        if (index==0) {
+            Node temp = new Node(val,node);
+            size++;
+            return temp;
+        }
+        node.next=helperInsert(val,index-1,node.next);
+        return node;
+    }
+
     public int deleteFirst() {
         if (size == 0 || head == null) {
             System.out.println("No Element To Delete");

@@ -3,7 +3,7 @@ package LinkedList.Implementation;
 public class Main {
     public static void main(String[] args) {
 
-        /*
+
         LL list = new LL();
         list.insertFirst(33);
         list.insertFirst(12);
@@ -28,7 +28,11 @@ public class Main {
 
         //find
         System.out.println(list.find(129));
-         */
+
+        //insert by Recusion
+        list.insertByRecursion(121,2);
+        list.display();
+
 
        /* DoublyLL list = new DoublyLL();
         list.insertFirst(33);
@@ -42,6 +46,7 @@ public class Main {
 
         */
 
+        /*
         CircularLL list = new CircularLL();
         list.insert(23);
         list.insert(3);
@@ -50,5 +55,7 @@ public class Main {
         list.display();
         list.delete(19);
         list.display();
+
+         */
     }
 }
