@@ -2,7 +2,7 @@ package LinkedList.Implementation;
 
 public class LL {
 
-    private Node head;
+    public Node head;
     private Node tail;
     public int size;
 
@@ -273,7 +273,7 @@ public class LL {
                 break;
             }
         }
-        if (length==0) {
+        if (length == 0) {
             return null;
         }
         //find the Start Node
@@ -281,13 +281,55 @@ public class LL {
         Node secondNode = head;
         //moving the second node K-times(length of cycle in list) away from first node
         while (length > 0) {
-            secondNode=secondNode.next;
+            secondNode = secondNode.next;
             length--;
         }
         while (firstNode != secondNode) {
-            firstNode=firstNode.next;
-            secondNode=secondNode.next;
+            firstNode = firstNode.next;
+            secondNode = secondNode.next;
         }
-            return firstNode; // Or return secondNode;
+        return firstNode; // Or return secondNode;
     }
+
+       /*
+  QUESTIONS 5 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   */
+
+    public void bubbleSort() {
+        bubbleSortHelper(size-1, 0);
+    }
+
+    private void bubbleSortHelper(int row, int col) {
+        if (row == 0) {
+            return;
+        }
+        if (col < row) {
+            Node f = getIndex(col);
+            Node s = getIndex(col + 1);
+            if (f.val > s.val) {
+                //swap
+                if (f == head) {
+                    head = s;
+                    f.next = s.next;
+                    s.next = f;
+                } else if (s == tail) {
+                    Node tailPre = getIndex(col - 1);
+                    tailPre.next = s;
+                    tail = f;
+                    f.next = null;
+                    s.next = tail;
+                } else {
+                    Node pre = getIndex(col - 1);
+                    pre.next = s;
+                    f.next = s.next;
+                    s.next = f;
+                }
+            }
+            bubbleSortHelper(row, col + 1);
+        } else {
+            bubbleSortHelper(row - 1, 0);
+        }
+    }
+
 }

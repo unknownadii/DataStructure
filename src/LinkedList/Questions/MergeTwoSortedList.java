@@ -31,7 +31,7 @@ Answer on Leetcode
 
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    ListNode preHead = new ListNode(0);
+    ListNode preHead = new ListNode();
     ListNode last = preHead;
 
     while(l1 != null && l2 != null) {
