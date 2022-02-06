@@ -1,4 +1,4 @@
-package LinkedList.Questions.TwoPointersFastAndSlow;
+package LinkedList.Questions;
 
 import LinkedList.Implementation.LL;
 

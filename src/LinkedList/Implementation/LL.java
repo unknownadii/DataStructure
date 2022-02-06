@@ -368,4 +368,42 @@ QUESTIONS 8 :- Leetcode
         }
         head = pre;
     }
+
+    /*
+  QUESTIONS 9 :- Leetcode
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  */
+    public Node reverseLL2( int left, int right) {
+        if (left == right) {
+            return head;
+        }
+        Node prev = null;
+        Node current = head;
+        for (int i = 0; current.next != null && i < left - 1; i++) {
+            prev = current;
+            current = current.next;
+        }
+
+        Node last = prev;
+        Node newEnd = current;
+        //reverse between left and right
+        Node next = current.next;
+        for (int i = 0; current != null && i < right - left + 1; i++) {
+            current.next = prev;
+            prev = current;
+            current = next;
+            if (next != null) {
+                next = next.next;
+            }
+        }
+
+        if (last != null) {
+            last.next = prev;
+        } else {
+            head = prev;
+        }
+
+        newEnd.next = current;
+        return head;
+    }
 }
