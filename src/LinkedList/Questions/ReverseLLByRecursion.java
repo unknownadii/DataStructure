@@ -14,7 +14,7 @@ public class ReverseLLByRecursion {
         list.insertLast(3);
         list.insertLast(2);
         list.display();
-        list.reverseLLByRecursion(list.getIndex(0));
+        list.reverseLLByIteration();
         list.display();
     }
 }

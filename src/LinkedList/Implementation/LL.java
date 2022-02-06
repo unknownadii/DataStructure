@@ -346,4 +346,23 @@ QUESTIONS 7 :- Leetcode
         tail = temp;
         tail.next = null;
     }
+
+    /*
+QUESTIONS 8 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+    public void reverseLLByIteration() {
+        Node pre = null;
+        Node present = head;
+        Node nextPre = head.next;
+        while (present != null) {
+            present.next = pre;
+            pre = present;
+            present = nextPre;
+            if (nextPre != null) {
+                nextPre = nextPre.next;
+            }
+        }
+        head = pre;
+    }
 }
