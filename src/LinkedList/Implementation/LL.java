@@ -292,12 +292,12 @@ public class LL {
     }
 
        /*
-  QUESTIONS 5 :- Leetcode
+  QUESTIONS 6 :- Leetcode
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
    */
 
     public void bubbleSort() {
-        bubbleSortHelper(size-1, 0);
+        bubbleSortHelper(size - 1, 0);
     }
 
     private void bubbleSortHelper(int row, int col) {
@@ -332,4 +332,18 @@ public class LL {
         }
     }
 
+    /*
+QUESTIONS 7 :- Leetcode
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+    public void reverseLLByRecursion(Node temp) {
+        if (temp == tail) {
+            head = tail;
+            return;
+        }
+        reverseLLByRecursion(temp.next);
+        tail.next = temp;
+        tail = temp;
+        tail.next = null;
+    }
 }
