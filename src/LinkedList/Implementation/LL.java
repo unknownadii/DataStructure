@@ -352,6 +352,9 @@ QUESTIONS 8 :- Leetcode
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
     public void reverseLLByIteration() {
+        if (size < 2) {
+            return;
+        }
         Node pre = null;
         Node present = head;
         Node nextPre = head.next;

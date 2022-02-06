@@ -1,8 +1,8 @@
-package LinkedList.Questions;
+package LinkedList.Questions.TwoPointersFastAndSlow;
 
 import LinkedList.Implementation.LL;
 
-public class ReverseLLByRecursion {
+public class ReverseLLByIteration {
     public static void main(String[] args) {
         LL list = new LL();
         list.insertLast(1);
@@ -14,7 +14,7 @@ public class ReverseLLByRecursion {
         list.insertLast(3);
         list.insertLast(2);
         list.display();
-        list.reverseLLByRecursion(list.getIndex(0));
+        list.reverseLLByIteration();
         list.display();
     }
 }
