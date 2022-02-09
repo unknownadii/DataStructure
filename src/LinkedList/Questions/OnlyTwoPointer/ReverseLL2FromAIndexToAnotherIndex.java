@@ -1,4 +1,4 @@
-package LinkedList.Questions;
+package LinkedList.Questions.OnlyTwoPointer;
 
 import LinkedList.Implementation.LL;
 

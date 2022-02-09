@@ -1,4 +1,4 @@
-package LinkedList.Questions;
+package LinkedList.Questions.InPlaceReversal;
 
 import LinkedList.Implementation.LL;
 
@@ -17,9 +17,6 @@ public class ReverseLLByIteration {
         list.reverseLLByIteration();
         list.display();
     }
-
-
-
 
 
     // https://leetcode.com/problems/reverse-linked-list/submissions/

@@ -1,8 +1,6 @@
-package LinkedList.Questions;
-/*
-  https://www.geeksforgeeks.org/reverse-alternate-k-nodes-in-a-singly-linked-list/
- */
-public class ReverseNodesIn_k_AlernativeGroup {
+package LinkedList.Questions.OnlyTwoPointer;
+
+public class ReverseNodesInkGroup {
 
     public class ListNode {
         int val;
@@ -21,21 +19,24 @@ public class ReverseNodesIn_k_AlernativeGroup {
         }
     }
 
-    public ListNode reverseAlternateKGroup(ListNode head, int k) {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        //checking for k below 1 or below 1
         if (k <= 1 || head == null) {
             return head;
         }
 
-        // skip the first left-1 nodes
         ListNode current = head;
         ListNode prev = null;
 
-        while (current != null) {
+        int length = getLength(head);
+        int count = length / k;
+        while (count > 0) {
+            //storing the current position of previous Node and of current Node
             ListNode last = prev;
             ListNode newEnd = current;
 
-            // reverse between left and right
             ListNode next = current.next;
+            // reversing the list up k-group of nodes
             for (int i = 0; current != null && i < k; i++) {
                 current.next = prev;
                 prev = current;
@@ -48,16 +49,16 @@ public class ReverseNodesIn_k_AlernativeGroup {
             if (last != null) {
                 last.next = prev;
             } else {
+                // it will run for first time when previous is null
                 head = prev;
             }
 
+            //connecting present current with previous current
             newEnd.next = current;
 
-            // skip the k nodes
-            for (int i = 0; current != null && i < k; i++) {
-                prev = current;
-                current = current.next;
-            }
+            // Assigning the previous current node to the pre Node
+            prev = newEnd;
+            count--;
         }
         return head;
     }

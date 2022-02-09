@@ -1,6 +1,8 @@
-package LinkedList.Questions;
-
-public class ReverseNodesInkGroup {
+package LinkedList.Questions.OnlyTwoPointer;
+/*
+  https://www.geeksforgeeks.org/reverse-alternate-k-nodes-in-a-singly-linked-list/
+ */
+public class ReverseNodesIn_k_AlernativeGroup {
 
     public class ListNode {
         int val;
@@ -19,24 +21,21 @@ public class ReverseNodesInkGroup {
         }
     }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-        //checking for k below 1 or below 1
+    public ListNode reverseAlternateKGroup(ListNode head, int k) {
         if (k <= 1 || head == null) {
             return head;
         }
 
+        // skip the first left-1 nodes
         ListNode current = head;
         ListNode prev = null;
 
-        int length = getLength(head);
-        int count = length / k;
-        while (count > 0) {
-            //storing the current position of previous Node and of current Node
+        while (current != null) {
             ListNode last = prev;
             ListNode newEnd = current;
 
+            // reverse between left and right
             ListNode next = current.next;
-            // reversing the list up k-group of nodes
             for (int i = 0; current != null && i < k; i++) {
                 current.next = prev;
                 prev = current;
@@ -49,16 +48,16 @@ public class ReverseNodesInkGroup {
             if (last != null) {
                 last.next = prev;
             } else {
-                // it will run for first time when previous is null
                 head = prev;
             }
 
-            //connecting present current with previous current
             newEnd.next = current;
 
-            // Assigning the previous current node to the pre Node
-            prev = newEnd;
-            count--;
+            // skip the k nodes
+            for (int i = 0; current != null && i < k; i++) {
+                prev = current;
+                current = current.next;
+            }
         }
         return head;
     }
