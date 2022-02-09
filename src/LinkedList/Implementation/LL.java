@@ -1,5 +1,7 @@
 package LinkedList.Implementation;
 
+import LinkedList.Questions.RotateLL_By_K;
+
 public class LL {
 
     public Node head;
@@ -373,7 +375,7 @@ QUESTIONS 8 :- Leetcode
   QUESTIONS 9 :- Leetcode
   ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   */
-    public Node reverseLL2( int left, int right) {
+    public Node reverseLL2(int left, int right) {
         if (left == right) {
             return head;
         }
@@ -405,5 +407,30 @@ QUESTIONS 8 :- Leetcode
 
         newEnd.next = current;
         return head;
+    }
+
+
+    //testing
+    public void rotateRight(int k) {
+        if (k <= 0 || head == null || head.next == null) {
+            return ;
+        }
+        Node last = head;
+        int length = 1;
+        // count the length
+        while (last.next != null) {
+            last = last.next;
+            length++;
+        }
+
+        last.next = head;
+        int rotations = k % length;// to avoid the situation when some gives like rotation more than the length of list
+        int skip = length - rotations;// skip last "length - rotation nodes"
+        Node newLast = head;
+        for (int i = 0; i < skip - 1; i++) {
+            newLast = newLast.next;
+        }
+        head = newLast.next;
+        newLast.next = null;
     }
 }
