@@ -23,7 +23,6 @@ public class MiddleOfLL {
         }
     }
 
-
     public static ListNode middleNode(ListNode head) {
         ListNode f = head;
         ListNode s = head;
