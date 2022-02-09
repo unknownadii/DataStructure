@@ -1,9 +1,33 @@
-package LinkedList.Questions;
+package LinkedList.Questions.InPlaceReversal;
 
-import LinkedList.Implementation.LL;
-import LinkedList.Questions.TwoPointersFastAndSlow.MiddleOfLL;
+public class ReorderLL {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null) {
+            return;
+        }
 
-public class isPalindrome {
+        ListNode mid = middleNode(head);
+
+        ListNode hs = reverseList(mid);
+        ListNode hf = head;
+
+        // rearrange
+        while (hf != null && hs != null) {
+            ListNode temp = hf.next;
+            hf.next = hs;
+            hf = temp;
+
+            temp = hs.next;
+            hs.next = hf;
+            hs = temp;
+        }
+
+        // next of tail to null
+        if (hf != null) {
+            hf.next = null;
+        }
+    }
+
     public class ListNode {
         int val;
         ListNode next;
@@ -19,24 +43,6 @@ public class isPalindrome {
             this.val = val;
             this.next = next;
         }
-    }
-
-    public boolean isPalindrome(ListNode head) {
-        ListNode mid = middleNode(head);
-        ListNode headSecond = reverseList(mid);
-        ListNode rereverseHead = headSecond;
-
-        // compare both the halves
-        while (head != null && headSecond != null) {
-            if (head.val != headSecond.val) {
-                break;
-            }
-            head = head.next;
-            headSecond = headSecond.next;
-        }
-        reverseList(rereverseHead);
-
-        return head == null || headSecond == null;
     }
 
     public static ListNode middleNode(ListNode head) {

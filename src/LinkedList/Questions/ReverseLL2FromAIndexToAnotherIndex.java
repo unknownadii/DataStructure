@@ -2,7 +2,7 @@ package LinkedList.Questions;
 
 import LinkedList.Implementation.LL;
 
-public class ReverseLL2 {
+public class ReverseLL2FromAIndexToAnotherIndex {
 
 
     public static void main(String[] args) {
