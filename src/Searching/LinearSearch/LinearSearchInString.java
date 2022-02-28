@@ -1,11 +1,14 @@
 package Searching.LinearSearch;
 
+import java.util.Arrays;
+
 public class LinearSearchInString {
     public static void main(String[] args) {
         String str = "Aditya";
         char ch = 'i';
         System.out.println(searchChar(str, ch));
         System.out.println(searchCharForEachLoop(str, ch));
+        System.out.println(Arrays.toString(str.toCharArray()));// .toCharArray() will convert the String in to Array
     }
 
     static boolean searchCharForEachLoop(String str, char ch) {
