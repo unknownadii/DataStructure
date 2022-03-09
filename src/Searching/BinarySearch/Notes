@@ -1,0 +1,3 @@
+Question :-When to apply Binary Search in Questions ?
+Answer :- Apply binary search when the sequence of number or sorted array is
+          given and ask to perform some operation then use binary search it will work 90% of the time
