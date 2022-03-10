@@ -33,6 +33,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
             } else {
                 // potential ans found
                 ans = mid;
+                //But continue checking the for first occurrence of the element
                 if (findStartIndex) {
                     end = mid - 1;
                 } else {
