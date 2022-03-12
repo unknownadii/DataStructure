@@ -2,7 +2,7 @@ package Searching.BinarySearch.Questions;
 
 public class PeakIndexInMountainArray {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 1, 6, 5, 8, 4};
+        int[] arr = {4,5,6,7, 8,3,2};
         /*
         Input: nums = [1,2,1,3,5,6,4]
 Output: 5

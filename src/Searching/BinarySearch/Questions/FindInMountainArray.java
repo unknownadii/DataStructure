@@ -2,10 +2,11 @@ package Searching.BinarySearch.Questions;
 
 public class FindInMountainArray {
     public static void main(String[] args) {
-
+        int[] arr = {4,5,6,7, 8,3,2};
+        System.out.println(search(arr,5));
     }
     // https://leetcode.com/problems/find-in-mountain-array/
-    int search(int[] arr, int target) {
+    static int search(int[] arr, int target) {
         int peak = peakIndexInMountainArray(arr);
         int firstTry = orderAgnosticBS(arr, target, 0, peak);
         if (firstTry != -1) {
@@ -15,7 +16,7 @@ public class FindInMountainArray {
         return orderAgnosticBS(arr, target, peak+1, arr.length - 1);
     }
 
-    public int peakIndexInMountainArray(int[] arr) {
+     static int peakIndexInMountainArray(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
 
