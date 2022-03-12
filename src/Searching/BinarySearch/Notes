@@ -1,3 +1,5 @@
 Question :-When to apply Binary Search in Questions ?
 Answer :- Apply binary search when the sequence of number or sorted array is
           given and ask to perform some operation then use binary search it will work 90% of the time
+
+          2. when the minimize the largest or maximize the lowest term is given then apply binary search
