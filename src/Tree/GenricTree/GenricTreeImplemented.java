@@ -15,6 +15,7 @@ public class GenricTreeImplemented {
 
         public Node() {
         }
+
         public Node(int data) {
             this.data = data;
         }
@@ -203,10 +204,9 @@ public class GenricTreeImplemented {
                      cStack.push(childTemp);
                  }
                  */
-            }
-            else {
+            } else {
                 // adding all children node in cStack in reverse order
-                for(int i =temp.childrenNode.size() -1;i>=0;i--) {
+                for (int i = temp.childrenNode.size() - 1; i >= 0; i--) {
                     Node childTemp = temp.childrenNode.get(i);
                     cStack.push(childTemp);
                 }
@@ -223,5 +223,26 @@ public class GenricTreeImplemented {
 
 
     // 4. Delimiter Approach Level Order Traversal
+    public void delimiterMethodLinewiseLevelOrderTraversal(Node node) {
+        Queue<Node> mQueue = new ArrayDeque<>();
+        mQueue.add(node);
+        mQueue.add(new Node(-1));
+
+        while (mQueue.size() > 0) {
+            Node temp = mQueue.remove();
+            if (temp.data != -1) {
+                System.out.print(temp.data + " ");
+
+                for (Node child : temp.childrenNode) {
+                    mQueue.add(child);
+                }
+            } else {
+                if (mQueue.size() > 0) {
+                    mQueue.add(new Node(-1));
+                    System.out.println();
+                }
+            }
+        }
+    }
 
 }

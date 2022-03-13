@@ -8,6 +8,6 @@ public class DelimiterMethodOfLevelOrderTraversal {
 
         GenricTreeImplemented obj = new GenricTreeImplemented();
         GenricTreeImplemented.Node root = obj.contructGenricTree(arr);
-        obj.zigzagLinewiseLevelOrderTraversal(root);
+        obj.delimiterMethodLinewiseLevelOrderTraversal(root);
     }
 }
