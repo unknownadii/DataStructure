@@ -1,10 +1,9 @@
-package Tree;
+package Tree.GenricTree;
 
-import javax.swing.text.StyledEditorKit;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class GenricTree {
+public class GenricTreeImplemented {
     private static class Node {
         int data;
         ArrayList<Node> childrenNode = new ArrayList<>();
@@ -32,6 +31,7 @@ public class GenricTree {
             System.out.println("Not Found");
         }
 
+        traversal(root);
 
     }
 
@@ -144,4 +144,14 @@ public class GenricTree {
         return temp;
     }
 
+    // traversal in Genric tree
+    static void traversal(Node node) {
+        System.out.println("Node Pre -> " + node.data);
+        for (Node child : node.childrenNode) {
+            System.out.println("Edge Pre -> " + node.data + "-" + child.data);
+            traversal(child);
+            System.out.println("Edge Post -> " + node.data + "-" + child.data);
+        }
+        System.out.println("Node Post -> " + node.data);
+    }
 }
