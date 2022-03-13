@@ -135,6 +135,8 @@ public class GenricTreeImplemented {
     }
 
     //Level Order Traversal
+
+    // 1. Normal Level Order Traversal
     public void levelOrderTraversal(Node node) {
         Queue<Node> queue = new ArrayDeque<>();
         //root node
@@ -148,5 +150,26 @@ public class GenricTreeImplemented {
             }
         }
         System.out.println();
+    }
+
+    // 2. Line wise Level Order Traversal
+    public void linewiseLevelOrderTraversal(Node node) {
+        Queue<Node> mqueue = new ArrayDeque<>();
+        mqueue.add(node);
+
+        Queue<Node> cqueue = new ArrayDeque<>();
+        while (mqueue.size() > 0) {
+            Node temp = mqueue.remove();
+            System.out.print(temp.data + " ");
+            // adding all children node in cqueue
+            for (Node child : temp.childrenNode) {
+                cqueue.add(child);
+            }
+            if (mqueue.size() == 0) {
+                mqueue = cqueue;
+                cqueue = new ArrayDeque<>();
+                System.out.println();
+            }
+        }
     }
 }
