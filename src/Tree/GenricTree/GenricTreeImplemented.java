@@ -35,7 +35,7 @@ public class GenricTreeImplemented {
 
     }
 
-    static Node contructGenricTree(int arr[]) {
+    static Node contructGenricTree(int[] arr) {
         Node root = null;
         Stack<Node> st = new Stack<>();
         for (int i = 0; i < arr.length; i++) {
