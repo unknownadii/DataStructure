@@ -172,4 +172,46 @@ public class GenricTreeImplemented {
             }
         }
     }
+
+    // 3. ZigZack Line Wise Level Order Traversal
+    public void zigzagLinewiseLevelOrderTraversal(Node node) {
+        Stack<Node> mStack = new Stack<>();
+        mStack.push(node); // adding root node
+
+        Stack<Node> cStack = new Stack<>();
+        int level = 0;
+        while (mStack.size() > 0) {
+            Node temp = mStack.pop();
+            System.out.print(temp.data + " ");
+
+            // adding all children node in cStack
+            if (level % 2 == 0) {
+                for (Node child : temp.childrenNode) {
+                    cStack.push(child);
+                }
+
+                /*
+                 OR
+                 for(int i =0;i<temp.childrenNode.size();i++) {
+                     Node childTemp = temp.childrenNode.get(i);
+                     cStack.push(childTemp);
+                 }
+                 */
+            }
+            else {
+                // adding all children node in cStack in reverse order
+                for(int i =temp.childrenNode.size() -1;i>=0;i--) {
+                    Node childTemp = temp.childrenNode.get(i);
+                    cStack.push(childTemp);
+                }
+            }
+
+            if (mStack.size() == 0) {
+                mStack = cStack;
+                cStack = new Stack<>();
+                level++;
+                System.out.println();
+            }
+        }
+    }
 }
