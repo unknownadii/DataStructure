@@ -1,9 +1,6 @@
 package Tree.GenricTree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class GenricTreeImplemented {
     public GenricTreeImplemented() {
@@ -129,6 +126,13 @@ public class GenricTreeImplemented {
         }
         return temp;
     }
+
+
+/*
+========================================================================================================================
+========================================================================================================================
+                                                     Questions
+ */
 
     // traversal in Genric tree
     public void traversal(Node node) {
@@ -266,21 +270,22 @@ public class GenricTreeImplemented {
     // 6. Pair Class With Level Approach Level Order Traversal
     public void pairClassWithLevelMethodLinewiseLevelOrderTraversal(Node node) {
         Queue<Pair> mQueue = new ArrayDeque<>();
-        mQueue.add(new Pair(node,1));
-        int level =1;
+        mQueue.add(new Pair(node, 1));
+        int level = 1;
         while (mQueue.size() > 0) {
             Pair p = mQueue.remove();
             if (p.level > level) {
-                level=p.level;
+                level = p.level;
                 System.out.println();
             }
             System.out.print(p.node.data + " ");
             for (Node child : p.node.childrenNode) {
-                Pair childPair = new Pair(child,p.level+1);
+                Pair childPair = new Pair(child, p.level + 1);
                 mQueue.add(childPair);
             }
         }
     }
+
     private class Pair {
         Node node;
         int level;
@@ -289,5 +294,16 @@ public class GenricTreeImplemented {
             this.node = node;
             this.level = level;
         }
+    }
+
+    /*
+    -----------------------------------------Questions------------------------------------------------------------------
+     */
+    public void mirrorOfTree(Node node) {
+        for (Node child : node.childrenNode) {
+            mirrorOfTree(child);
+        }
+        //childrenNode is ArrayList so we are able to apply directly reverse function on this whole List
+        Collections.reverse(node.childrenNode);
     }
 }
