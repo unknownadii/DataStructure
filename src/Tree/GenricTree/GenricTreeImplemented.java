@@ -306,4 +306,20 @@ public class GenricTreeImplemented {
         //childrenNode is ArrayList so we are able to apply directly reverse function on this whole List
         Collections.reverse(node.childrenNode);
     }
+
+    public void removeLeafs(Node node) {
+        // checking the all it's Own children node that it is leaf or not
+        for (int i = node.childrenNode.size() - 1; i >= 0; i--) {
+            Node child = node.childrenNode.get(i);
+            //checking that the node has any childrean node or not   if it has any node childrean then it is not leaf node
+            if (child.childrenNode.size() == 0) {
+                node.childrenNode.remove(i);
+            }
+        }
+
+        // Now asking all remaining children nodes to remove it's own leaf node
+        for (Node child : node.childrenNode) {
+            removeLeafs(child);
+        }
+    }
 }
