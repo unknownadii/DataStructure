@@ -1,41 +1,20 @@
 package Tree.GenricTree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class GenricTreeImplemented {
-    private static class Node {
+    public GenricTreeImplemented() {
+    }
+
+    public class Node {
         int data;
         ArrayList<Node> childrenNode = new ArrayList<>();
     }
 
-    public static void main(String[] args) {
-        int arr[] = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 100, -1, 120, -1, -1, 90, -1, 40, 100, -1, -1, -1};
-        Node root = contructGenricTree(arr);
-
-        System.out.println(size(root));
-
-        display(root);
-
-        System.out.println(maxValue(root));
-        System.out.println(minValue(root));
-
-        System.out.println(heightInEdges(root));
-        System.out.println(heightInNodes(root));
-
-        System.out.println(find(root, 1080));
-        Node temp = findNode(root, 100);
-        if (temp != null) {
-            System.out.println("Found -> " + temp.data);
-        } else {
-            System.out.println("Not Found");
-        }
-
-        traversal(root);
-
-    }
-
-    static Node contructGenricTree(int[] arr) {
+    public Node contructGenricTree(int[] arr) {
         Node root = null;
         Stack<Node> st = new Stack<>();
         for (int i = 0; i < arr.length; i++) {
@@ -55,7 +34,7 @@ public class GenricTreeImplemented {
         return root;
     }
 
-    static void display(Node node) {
+    public void display(Node node) {
         // Display Own Value
         String str = node.data + "->";
 
@@ -73,7 +52,7 @@ public class GenricTreeImplemented {
     }
 
     //Size of tree
-    static int size(Node node) {
+    public int size(Node node) {
         int count = 0;
         for (Node child : node.childrenNode) {
             count += size(child);
@@ -83,7 +62,7 @@ public class GenricTreeImplemented {
     }
 
     //Max value of tree
-    static int maxValue(Node node) {
+    public int maxValue(Node node) {
         int max = Integer.MIN_VALUE;
         for (Node child : node.childrenNode) {
             max = Math.max(max, maxValue(child));
@@ -93,7 +72,7 @@ public class GenricTreeImplemented {
     }
 
     //Min value of tree
-    static int minValue(Node node) {
+    public int minValue(Node node) {
         int min = Integer.MAX_VALUE;
         for (Node child : node.childrenNode) {
             min = Math.min(min, maxValue(child));
@@ -103,7 +82,7 @@ public class GenricTreeImplemented {
     }
 
     // Height Of the Tree
-    static int heightInEdges(Node node) {
+    public int heightInEdges(Node node) {
         int height = -1; //Take -1 when Edges height is asked
         for (Node child : node.childrenNode) {
             height = Math.max(height, heightInEdges(child));
@@ -112,7 +91,7 @@ public class GenricTreeImplemented {
         return height;
     }
 
-    static int heightInNodes(Node node) {
+    public int heightInNodes(Node node) {
         int height = 0; //Take 0 when Node Height is asked
         for (Node child : node.childrenNode) {
             height = Math.max(height, heightInNodes(child));
@@ -122,7 +101,7 @@ public class GenricTreeImplemented {
     }
 
     //Find a element in tree
-    static boolean find(Node node, int value) {
+    public boolean find(Node node, int value) {
         if (node.data == value) {
             return true;
         }
@@ -133,7 +112,7 @@ public class GenricTreeImplemented {
         return temp;
     }
 
-    static Node findNode(Node node, int value) {
+    public Node findNode(Node node, int value) {
         if (node.data == value) {
             return node;
         }
@@ -145,7 +124,7 @@ public class GenricTreeImplemented {
     }
 
     // traversal in Genric tree
-    static void traversal(Node node) {
+    public void traversal(Node node) {
         System.out.println("Node Pre -> " + node.data);
         for (Node child : node.childrenNode) {
             System.out.println("Edge Pre -> " + node.data + "-" + child.data);
@@ -153,5 +132,21 @@ public class GenricTreeImplemented {
             System.out.println("Edge Post -> " + node.data + "-" + child.data);
         }
         System.out.println("Node Post -> " + node.data);
+    }
+
+    //Level Order Traversal
+    public void levelOrderTraversal(Node node) {
+        Queue<Node> queue = new ArrayDeque<>();
+        //root node
+        queue.add(node);
+        while (queue.size() > 0) {
+            Node temp = queue.remove();
+            System.out.print(temp.data + "->");
+            // Adding all children of Node temp
+            for (Node child : temp.childrenNode) {
+                queue.add(child);
+            }
+        }
+        System.out.println();
     }
 }
