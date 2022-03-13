@@ -245,4 +245,49 @@ public class GenricTreeImplemented {
         }
     }
 
+    // 5. Count Approach Level Order Traversal
+    public void countLevelOrderTraversal(Node node) {
+        Queue<Node> mQueue = new ArrayDeque<>();
+        //adding the root
+        mQueue.add(node);
+        while (mQueue.size() > 0) {
+            int count = mQueue.size();
+            for (int i = 0; i < count; i++) {
+                node = mQueue.remove();
+                System.out.print(node.data + " ");
+                for (Node child : node.childrenNode) {
+                    mQueue.add(child);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    // 6. Pair Class With Level Approach Level Order Traversal
+    public void pairClassWithLevelMethodLinewiseLevelOrderTraversal(Node node) {
+        Queue<Pair> mQueue = new ArrayDeque<>();
+        mQueue.add(new Pair(node,1));
+        int level =1;
+        while (mQueue.size() > 0) {
+            Pair p = mQueue.remove();
+            if (p.level > level) {
+                level=p.level;
+                System.out.println();
+            }
+            System.out.print(p.node.data + " ");
+            for (Node child : p.node.childrenNode) {
+                Pair childPair = new Pair(child,p.level+1);
+                mQueue.add(childPair);
+            }
+        }
+    }
+    private class Pair {
+        Node node;
+        int level;
+
+        public Pair(Node node, int level) {
+            this.node = node;
+            this.level = level;
+        }
+    }
 }
