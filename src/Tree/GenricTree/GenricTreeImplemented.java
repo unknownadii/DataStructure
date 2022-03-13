@@ -12,6 +12,12 @@ public class GenricTreeImplemented {
     public class Node {
         int data;
         ArrayList<Node> childrenNode = new ArrayList<>();
+
+        public Node() {
+        }
+        public Node(int data) {
+            this.data = data;
+        }
     }
 
     public Node contructGenricTree(int[] arr) {
@@ -214,4 +220,8 @@ public class GenricTreeImplemented {
             }
         }
     }
+
+
+    // 4. Delimiter Approach Level Order Traversal
+
 }
