@@ -451,7 +451,43 @@ public class GenricTreeImplemented {
 
     //Question :- Tree is symmetric or not?
     public boolean isTreeSymmetric(Node node) {
-        return areTreeMirrorInShape(node,node);
+        return areTreeMirrorInShape(node, node);
     }
 
+
+    //Question :- iterative Pre And Post Order
+
+    public void iterativePreAndPost(Node node) {
+        IterativePair p = new IterativePair(node, -1);
+        Stack<IterativePair> st = new Stack<>();
+        st.push(p);
+        String preOrder = " ";
+        String postOrder = " ";
+        while (st.size() > 0) {
+            IterativePair top = st.peek();
+            if (top.state == -1) {
+                preOrder += top.node.data + "->";
+                top.state++;
+            } else if (top.state >= 0 && top.state < top.node.childrenNode.size()) {
+                IterativePair cp = new IterativePair(top.node.childrenNode.get(top.state), -1);
+                st.push(cp);
+                top.state++;
+            } else {
+                postOrder += top.node.data + "->";
+                st.pop();
+            }
+        }
+        System.out.println("PreOrder"+preOrder);
+        System.out.println("PostOrder"+postOrder);
+    }
+
+    private class IterativePair {
+        Node node;
+        int state;
+
+        public IterativePair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
+    }
 }

@@ -126,7 +126,7 @@ public class GenricTreeImplementedTravalAndChange {
         return data;
     }
 
-    //Kth Largest Element In A Tree
+    //Node With Maximum subtree Sum
     int maxSum = 0;
     int maxSumNode = 0;
 
@@ -143,6 +143,30 @@ public class GenricTreeImplementedTravalAndChange {
         }
         return sum;
     }
+
+
+    //Diameter Of A Genric Tree (Maximum Edges Between Two nodes)
+    int diameter = 0;
+
+    public int diameterOfTree(Node node) {
+        int height = -1;
+        int secondHighestHeight = -1;
+        for (Node child : node.childrenNode) {
+            int returnHeight = diameterOfTree(child);
+            if (returnHeight >= height) {
+                secondHighestHeight = height;
+                height = returnHeight;
+            } else if (returnHeight >= secondHighestHeight) {
+                secondHighestHeight = returnHeight;
+            }
+        }
+        if (height + secondHighestHeight + 2 > diameter) {
+            diameter = height + secondHighestHeight + 2;
+        }
+        height += 1;
+        return height;
+    }
+
 
 /*
 ========================================================================================================================
