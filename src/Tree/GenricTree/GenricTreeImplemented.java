@@ -322,4 +322,25 @@ public class GenricTreeImplemented {
             removeLeafs(child);
         }
     }
+
+    public void linearizeOfGenricTree(Node node) {
+        for (Node child : node.childrenNode) {
+            linearizeOfGenricTree(child);
+        }
+        for (int i = node.childrenNode.size() - 2; i >= 0; i--) {
+            Node lastChild = node.childrenNode.remove(i + 1);
+            // getting the tail node of second last children
+            Node secondLast = getTail(node.childrenNode.get(i));
+            //adding last children node into the second last tail node.
+            secondLast.childrenNode.add(lastChild);
+        }
+    }
+
+    private Node getTail(Node node) {
+        while (node.childrenNode.size() >= 1) {
+            int indexLast = node.childrenNode.size() - 1;
+            node = node.childrenNode.get(indexLast);
+        }
+        return node;
+    }
 }
