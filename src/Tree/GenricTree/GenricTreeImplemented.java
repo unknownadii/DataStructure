@@ -409,7 +409,22 @@ public class GenricTreeImplemented {
             i--;
             j--;
         }
-        return (i+1) + (j+1);
+        return (i + 1) + (j + 1);
     }
 
+
+    //Question :- Are trees Similar in Shape
+    public boolean areTreeSimilar(Node n1, Node n2) {
+        if (n1.childrenNode.size() != n2.childrenNode.size()) {
+            return false;
+        }
+        for (int i = 0; i < n1.childrenNode.size(); i++) {
+            Node f = n1.childrenNode.get(i);
+            Node s = n2.childrenNode.get(i);
+            if (areTreeSimilar(f, s) == false) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
