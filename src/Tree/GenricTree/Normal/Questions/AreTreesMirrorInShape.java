@@ -1,8 +1,8 @@
-package Tree.GenricTree.Questions;
+package Tree.GenricTree.Normal.Questions;
 
-import Tree.GenricTree.GenricTreeImplemented;
+import Tree.GenricTree.Normal.GenricTreeImplemented;
 
-public class AreTreesSimilarInShape {
+public class AreTreesMirrorInShape {
     public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, 40, 100, -1, -1, -1};
         int[] arr3 = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, -1, -1, 90, -1, 40, 100, -1, -1, -1};
@@ -17,7 +17,7 @@ public class AreTreesSimilarInShape {
         obj.linewiseLevelOrderTraversal(root2);
 
         //distance between two nodes
-        System.out.println(obj.areTreeSimilar(root, root2));
-        System.out.println(obj.areTreeSimilar(root3, root2));
+        System.out.println(obj.areTreeMirrorInShape(root, root2));
+        System.out.println(obj.areTreeMirrorInShape(root3, root2));
     }
 }

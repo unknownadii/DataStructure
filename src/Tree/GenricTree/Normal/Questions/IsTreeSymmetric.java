@@ -1,6 +1,6 @@
-package Tree.GenricTree.Questions;
+package Tree.GenricTree.Normal.Questions;
 
-import Tree.GenricTree.GenricTreeImplemented;
+import Tree.GenricTree.Normal.GenricTreeImplemented;
 
 public class IsTreeSymmetric {
     public static void main(String[] args) {

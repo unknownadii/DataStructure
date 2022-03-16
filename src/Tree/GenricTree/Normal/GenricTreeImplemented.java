@@ -1,4 +1,4 @@
-package Tree.GenricTree;
+package Tree.GenricTree.Normal;
 
 import java.util.*;
 

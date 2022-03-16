@@ -1,6 +1,6 @@
-package Tree.GenricTree.Questions;
+package Tree.GenricTree.Normal.Questions;
 
-import Tree.GenricTree.GenricTreeImplemented;
+import Tree.GenricTree.Normal.GenricTreeImplemented;
 
 /*
 Convert From this tree to

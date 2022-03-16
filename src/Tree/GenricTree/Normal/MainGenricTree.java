@@ -1,4 +1,6 @@
-package Tree.GenricTree;
+package Tree.GenricTree.Normal;
+
+import Tree.GenricTree.Normal.GenricTreeImplemented;
 
 public class MainGenricTree {
     public  static void main(String[] args) {

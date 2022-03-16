@@ -1,6 +1,6 @@
-package Tree.GenricTree.LevelOrderTraversal;
+package Tree.GenricTree.Normal.LevelOrderTraversal;
 
-import Tree.GenricTree.GenricTreeImplemented;
+import Tree.GenricTree.Normal.GenricTreeImplemented;
 
 /*
 Normal LineWise Level Order Traversal
