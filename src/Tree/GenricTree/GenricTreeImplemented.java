@@ -382,4 +382,19 @@ public class GenricTreeImplemented {
         return new ArrayList<>();
     }
 
+
+    //Question :- Lowest comman anciester
+    public int lca(Node node, int firstNode, int secondNode) {
+
+        // find first node to root path then find first matching value in list and returned it.
+        ArrayList<Integer> fNode = node2RootPath(node, firstNode);
+        ArrayList<Integer> sNode = node2RootPath(node, secondNode);
+        int i = fNode.size() - 1, j = sNode.size() - 1;
+        while (i>=0 && j>=0 && fNode.get(i) == sNode.get(j)){
+            i--;
+            j--;
+        }
+        return fNode.get(i+1); // OR  return sNode.get(i+1);
+    }
+
 }
