@@ -9,16 +9,13 @@ import Tree.GenricTree.GenricTreeImplemented;
 
 50  60        70    80    90        100
 
-                 110 120
+                 110  120
 
-                 if two nodes is 50 and 120 then
-                 output :- 10
-                 if two nodes is 110 and 90 then
-                 output :- 30
-                 if two nodes is 80 and 120 then
-                 output :- 80
+                 distance between 70 and 120 is :-
+                 output :- 3
+
  */
-public class LCA_lowest_comman_anciester {
+public class DistanceBetweenTwoNodesInEdges {
     public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, 40, 100, -1, -1, -1};
 
@@ -26,7 +23,7 @@ public class LCA_lowest_comman_anciester {
         GenricTreeImplemented.Node root = obj.contructGenricTree(arr);
         obj.linewiseLevelOrderTraversal(root);
 
-        //lowest comman anciester
-        System.out.println(obj.lca(root,70,120));
+        //distance between two nodes
+        System.out.println(obj.distanceBetweenTwoNodes(root,70,120));
     }
 }
