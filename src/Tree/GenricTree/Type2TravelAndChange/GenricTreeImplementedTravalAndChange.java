@@ -79,18 +79,51 @@ public class GenricTreeImplementedTravalAndChange {
         if (state == 0) {
             if (node.data == data) {
                 state++;
-            }
-            else {
+            } else {
                 predecessor = node;
             }
-        }
-        else if (state == 1) {
+        } else if (state == 1) {
             successor = node;
             state++;
         }
         for (Node child : node.childrenNode) {
-            predecessorAndSuccessor(child,data);
+            predecessorAndSuccessor(child, data);
         }
+    }
+
+
+    //Ceil And Floor Of A Number
+
+    public int ceil, floor;
+
+    public void ceilAndFloor(Node node, int data) {
+        if (node.data > data) {
+            if (node.data < ceil) {
+                ceil = node.data;
+            }
+        }
+        if (node.data < data) {
+            if (node.data > floor) {
+                floor = node.data;
+            }
+        }
+        for (Node child : node.childrenNode) {
+            ceilAndFloor(child, data);
+        }
+    }
+
+
+    //Kth Largest Element In A Tree
+
+    public int kthLargestElement(Node node, int k) {
+        int data = Integer.MAX_VALUE;
+        floor = Integer.MIN_VALUE;
+        for (int i = 0; i < k; i++) {
+            ceilAndFloor(node, data);
+            data = floor;
+            floor = Integer.MIN_VALUE;
+        }
+        return data;
     }
 
 
