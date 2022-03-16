@@ -448,4 +448,10 @@ public class GenricTreeImplemented {
         return true;
     }
 
+
+    //Question :- Tree is symmetric or not?
+    public boolean isTreeSymmetric(Node node) {
+        return areTreeMirrorInShape(node,node);
+    }
+
 }
