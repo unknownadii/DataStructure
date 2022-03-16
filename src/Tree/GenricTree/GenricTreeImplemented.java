@@ -363,4 +363,23 @@ public class GenricTreeImplemented {
         }
         return lastChildNode;
     }
+
+
+    //Question :- Node To Root Path
+    public ArrayList<Integer> node2RootPath(Node node, int nodeToFindData) {
+        if (node.data == nodeToFindData) {
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(node.data);
+            return list;
+        }
+        for (Node child : node.childrenNode) {
+            ArrayList<Integer> returnedList = node2RootPath(child, nodeToFindData);
+            if (returnedList.size() > 0) {
+                returnedList.add(node.data);
+                return returnedList;
+            }
+        }
+        return new ArrayList<>();
+    }
+
 }
