@@ -299,6 +299,8 @@ public class GenricTreeImplemented {
     /*
     -----------------------------------------Questions------------------------------------------------------------------
      */
+
+    //Question :- Convert tree in to mirror Tree
     public void mirrorOfTree(Node node) {
         for (Node child : node.childrenNode) {
             mirrorOfTree(child);
@@ -307,6 +309,7 @@ public class GenricTreeImplemented {
         Collections.reverse(node.childrenNode);
     }
 
+    // Question remove all leaf node from tree
     public void removeLeafs(Node node) {
         // checking the all it's Own children node that it is leaf or not
         for (int i = node.childrenNode.size() - 1; i >= 0; i--) {
@@ -323,6 +326,8 @@ public class GenricTreeImplemented {
         }
     }
 
+
+    //Question :- Linearize A Tree
     public void linearizeOfGenricTree(Node node) {
         for (Node child : node.childrenNode) {
             linearizeOfGenricTree(child);
@@ -342,5 +347,20 @@ public class GenricTreeImplemented {
             node = node.childrenNode.get(indexLast);
         }
         return node;
+    }
+
+    public Node linearizeOfGenricTreeMethod2(Node node) {
+        if (node.childrenNode.size() == 0) {
+            return node;
+        }
+        Node lastChildNode = linearizeOfGenricTreeMethod2(node.childrenNode.get(node.childrenNode.size() - 1));
+        while (node.childrenNode.size() > 1) {
+            Node lastNode = node.childrenNode.remove(node.childrenNode.size() - 1);
+            // after removing a node the size will decrease by one and the second last node will become last node
+            Node secondLastNode = node.childrenNode.get(node.childrenNode.size() - 1);
+            Node lastTailNode = linearizeOfGenricTreeMethod2(secondLastNode);
+            lastTailNode.childrenNode.add(lastNode);
+        }
+        return lastChildNode;
     }
 }
