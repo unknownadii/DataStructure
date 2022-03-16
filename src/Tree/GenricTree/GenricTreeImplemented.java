@@ -427,4 +427,25 @@ public class GenricTreeImplemented {
         }
         return true;
     }
+
+    //Question :- Are trees Mirror in Shape
+    public boolean areTreeMirrorInShape(Node n1, Node n2) {
+        if (n1.childrenNode.size() != n2.childrenNode.size()) {
+            return false;
+        }
+        int i = n1.childrenNode.size() - 1, j = 0;
+        // or int j = n1.children.size() -1 -i;
+
+        while (i >= 0 && j < n2.childrenNode.size()) {
+            Node f = n1.childrenNode.get(i);
+            Node s = n2.childrenNode.get(j);
+            if (areTreeMirrorInShape(f, s) == false) {
+                return false;
+            }
+            i--;
+            j++;
+        }
+        return true;
+    }
+
 }
