@@ -126,6 +126,23 @@ public class GenricTreeImplementedTravalAndChange {
         return data;
     }
 
+    //Kth Largest Element In A Tree
+    int maxSum = 0;
+    int maxSumNode = 0;
+
+    public int nodeWithMaximumSubtreeSum(Node node) {
+        int sum = 0;
+        for (Node child : node.childrenNode) {
+            int returnSum = nodeWithMaximumSubtreeSum(child);
+            sum += returnSum;
+        }
+        sum += node.data;
+        if (sum > maxSum) {
+            maxSum = sum;
+            maxSumNode = node.data;
+        }
+        return sum;
+    }
 
 /*
 ========================================================================================================================
