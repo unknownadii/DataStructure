@@ -344,32 +344,32 @@ public class BinaryTreeImplemented {
 
 
     // print path from leaf to root when the sum of all nodes in path is between in range (l0-l1)
-    public static void pathToLeafFromRootInSumRange(Node node, String path, int sum, int lo, int hi){
-        if(node.left != null && node.right != null){
+    public static void pathToLeafFromRootInSumRange(Node node, String path, int sum, int lo, int hi) {
+        if (node.left != null && node.right != null) {
             pathToLeafFromRootInSumRange(node.left, path + node.data + " ", sum + node.data, lo, hi);
             pathToLeafFromRootInSumRange(node.right, path + node.data + " ", sum + node.data, lo, hi);
-        } else if(node.left != null){
+        } else if (node.left != null) {
             pathToLeafFromRootInSumRange(node.left, path + node.data + " ", sum + node.data, lo, hi);
-        } else if(node.right != null){
+        } else if (node.right != null) {
             pathToLeafFromRootInSumRange(node.right, path + node.data + " ", sum + node.data, lo, hi);
         } else {
             path += node.data;
             sum += node.data;
 
-            if(sum >= lo && sum <= hi){
+            if (sum >= lo && sum <= hi) {
                 System.out.println(path);
             }
         }
     }
 
     //Method 2
-    public  void pathToLeafFromRootInSumRange2(Node node, int low, int high, int sum, String path){
-        if (node==null) {
+    public void pathToLeafFromRootInSumRange2(Node node, int low, int high, int sum, String path) {
+        if (node == null) {
             return;
         }
-        if (node.left == null && node.right ==null) {
-            path+=node.data;
-            sum+=node.data;
+        if (node.left == null && node.right == null) {
+            path += node.data;
+            sum += node.data;
             if (sum >= low && sum <= high) {
                 System.out.println(path);
             }
@@ -378,4 +378,75 @@ public class BinaryTreeImplemented {
         pathToLeafFromRootInSumRange2(node.left, low, high, sum + node.data, path + node.data + " ");
         pathToLeafFromRootInSumRange2(node.right, low, high, sum + node.data, path + node.data + " ");
     }
+
+
+    //Transform Tree InTo Left Cloned Tree
+    public Node transformTreeInToLeftClonedTree(Node node) {
+        if (node == null) {
+            return null;
+        }
+        Node returnLeft = transformTreeInToLeftClonedTree(node.left);
+        Node returnRight = transformTreeInToLeftClonedTree(node.right);
+        Node temp = new Node(node.data, returnLeft, null);
+        node.left = temp;
+        node.right = returnRight;
+        return node;
+    }
+
+
+    //Transform Left Cloned Tree To Normal Tree
+    public Node transformLeftClonedTreeToNormalTree(Node node) {
+        if (node == null) {
+            return null;
+        }
+        node.left = transformLeftClonedTreeToNormalTree(node.left.left);
+        node.right = transformLeftClonedTreeToNormalTree(node.right);
+        return node;
+    }
+
+
+    //Remove all leaf node from Tree
+    public Node removeAllLeafNode(Node node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.left == null && node.right == null) {
+            return null;
+        }
+        node.left = removeAllLeafNode(node.left);
+        node.right = removeAllLeafNode(node.right);
+        return node;
+    }
+
+
+    //Print All single child node in a tree
+    public void printAllSingleChildNode(Node node) {
+        if (node == null) {
+            return;
+        }
+        if (node.left == null  && node.right !=null) {
+            System.out.print(node.right.data + " child <- parent "+node.data +" ");
+        }
+        else if ( node.right ==null && node.left != null ) {
+            System.out.print(node.left.data + " child <- parent "+node.data +" ");
+        }
+        printAllSingleChildNode(node.left);
+        printAllSingleChildNode(node.right);
+    }
+
+    //Method2
+    public void printAllSingleChildNode2(Node node,Node parent) {
+        if (node == null) {
+            return;
+        }
+        if (parent !=null && parent.left==null && parent.right == node) {
+            System.out.print(node.data + " child <- parent " + parent.data +" ");
+        }
+        else if (parent !=null && parent.right==null && parent.left == node) {
+            System.out.print(node.data + " child <- parent " + parent.data +" ");
+        }
+        printAllSingleChildNode2(node.left,node);
+        printAllSingleChildNode2(node.right,node);
+    }
+
 }
