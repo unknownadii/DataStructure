@@ -341,4 +341,41 @@ public class BinaryTreeImplemented {
             }
         }
     }
+
+
+    // print path from leaf to root when the sum of all nodes in path is between in range (l0-l1)
+    public static void pathToLeafFromRootInSumRange(Node node, String path, int sum, int lo, int hi){
+        if(node.left != null && node.right != null){
+            pathToLeafFromRootInSumRange(node.left, path + node.data + " ", sum + node.data, lo, hi);
+            pathToLeafFromRootInSumRange(node.right, path + node.data + " ", sum + node.data, lo, hi);
+        } else if(node.left != null){
+            pathToLeafFromRootInSumRange(node.left, path + node.data + " ", sum + node.data, lo, hi);
+        } else if(node.right != null){
+            pathToLeafFromRootInSumRange(node.right, path + node.data + " ", sum + node.data, lo, hi);
+        } else {
+            path += node.data;
+            sum += node.data;
+
+            if(sum >= lo && sum <= hi){
+                System.out.println(path);
+            }
+        }
+    }
+
+    //Method 2
+    public  void pathToLeafFromRootInSumRange2(Node node, int low, int high, int sum, String path){
+        if (node==null) {
+            return;
+        }
+        if (node.left == null && node.right ==null) {
+            path+=node.data;
+            sum+=node.data;
+            if (sum >= low && sum <= high) {
+                System.out.println(path);
+            }
+            return;
+        }
+        pathToLeafFromRootInSumRange2(node.left, low, high, sum + node.data, path + node.data + " ");
+        pathToLeafFromRootInSumRange2(node.right, low, high, sum + node.data, path + node.data + " ");
+    }
 }
