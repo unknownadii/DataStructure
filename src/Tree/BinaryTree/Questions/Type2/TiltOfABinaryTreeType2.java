@@ -1,4 +1,4 @@
-package Tree.BinaryTree.Questions;
+package Tree.BinaryTree.Questions.Type2;
 
 import Tree.BinaryTree.BinaryTreeImplemented;
 

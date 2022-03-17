@@ -424,42 +424,94 @@ public class BinaryTreeImplemented {
         if (node == null) {
             return;
         }
-        if (node.left == null  && node.right !=null) {
-            System.out.print(node.right.data + " child <- parent "+node.data +" ");
-        }
-        else if ( node.right ==null && node.left != null ) {
-            System.out.print(node.left.data + " child <- parent "+node.data +" ");
+        if (node.left == null && node.right != null) {
+            System.out.print(node.right.data + " child <- parent " + node.data + " ");
+        } else if (node.right == null && node.left != null) {
+            System.out.print(node.left.data + " child <- parent " + node.data + " ");
         }
         printAllSingleChildNode(node.left);
         printAllSingleChildNode(node.right);
     }
 
     //Method2
-    public void printAllSingleChildNode2(Node node,Node parent) {
+    public void printAllSingleChildNode2(Node node, Node parent) {
         if (node == null) {
             return;
         }
-        if (parent !=null && parent.left==null && parent.right == node) {
-            System.out.print(node.data + " child <- parent " + parent.data +" ");
+        if (parent != null && parent.left == null && parent.right == node) {
+            System.out.print(node.data + " child <- parent " + parent.data + " ");
+        } else if (parent != null && parent.right == null && parent.left == node) {
+            System.out.print(node.data + " child <- parent " + parent.data + " ");
         }
-        else if (parent !=null && parent.right==null && parent.left == node) {
-            System.out.print(node.data + " child <- parent " + parent.data +" ");
-        }
-        printAllSingleChildNode2(node.left,node);
-        printAllSingleChildNode2(node.right,node);
+        printAllSingleChildNode2(node.left, node);
+        printAllSingleChildNode2(node.right, node);
     }
 
 
     //Tilt Of Binary Tree
-   public int tiltTree =0;
+    public int tiltTree = 0;
+
     public int tilt(Node node) {
-        if (node==null) {
+        if (node == null) {
             return 0;
         }
         int leftTilt = tilt(node.left);
         int rightTilt = tilt(node.right);
         int tSum = leftTilt + rightTilt + node.data;
-        tiltTree = Math.abs(leftTilt -rightTilt);
+        tiltTree = Math.abs(leftTilt - rightTilt);
         return tSum;
+    }
+
+
+    //Diameter Of A Binary Tree
+    public int diameter(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int heightLeft = height(node.left);
+        int heightRight = height(node.right);
+
+        //calling there children nodes
+        int leftDia = diameter(node.left);
+        int rightDia = diameter(node.right);
+
+        int totalDia = Math.max(heightLeft + heightRight + 2, Math.max(leftDia, rightDia));
+        return totalDia;
+    }
+
+    //Method 2 Here returning height but main focus of workingon dia variable for diamter
+    public int dia = 0;
+
+    public int diameter2(Node node) {
+        if (node == null) {
+            return -1;
+        }
+        int lh = diameter2(node.left);
+        int rh = diameter2(node.right);
+        int th = Math.max(lh, rh) + 1;
+        if (lh + rh + 2 > dia) {
+            dia = lh + rh + 2;
+        }
+        return th;
+    }
+
+    // Method 3
+    public class DiaPair {
+        int height;
+        int diameter;
+    }
+    public DiaPair diameter3(Node node) {
+        if (node==null) {
+            DiaPair pair = new DiaPair();
+            pair.diameter=0;
+            pair.height=-1;
+            return pair;
+        }
+        DiaPair leftPair = diameter3(node.left);
+        DiaPair rightPair = diameter3(node.right);
+        DiaPair tep = new DiaPair();
+        tep.height = Math.max(leftPair.height,rightPair.height) +1;
+        tep.diameter = Math.max(leftPair.height + rightPair.height +2,Math.max(leftPair.diameter,rightPair.diameter)) +1;
+        return tep;
     }
 }
