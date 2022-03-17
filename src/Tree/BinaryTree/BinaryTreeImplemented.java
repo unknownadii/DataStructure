@@ -1,6 +1,7 @@
 package Tree.BinaryTree;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -209,6 +210,135 @@ public class BinaryTreeImplemented {
                 }
             }
             System.out.println();
+        }
+    }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------Questions---------------------------------------------------------------------------------------------------------------
+
+    // Find a node in a tree
+    public boolean find(Node node, int data) {
+        if (node == null) {
+            return false;
+        }
+        if (node.data == data) {
+            return true;
+        }
+        boolean leftReturn = find(node.left, data);
+        if (leftReturn) {
+            return true;
+        }
+        boolean rightReturn = find(node.right, data);
+        if (rightReturn) {
+            return true;
+        }
+        return false;
+    }
+
+    //Find Node to root path
+    public ArrayList<Integer> nodeToRootPath(Node node, int data) {
+        if (node == null) {
+            return new ArrayList<>();
+        }
+        if (node.data == data) {
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(node.data);
+            return list;
+        }
+        ArrayList<Integer> leftList = nodeToRootPath(node.left, data);
+        if (leftList.size() != 0) {
+            leftList.add(node.data);
+            return leftList;
+        }
+        ArrayList<Integer> rightList = nodeToRootPath(node.right, data);
+        if (rightList.size() != 0) {
+            rightList.add(node.data);
+            return rightList;
+        }
+        return new ArrayList<>();
+    }
+
+    // return nodes
+    public ArrayList<Node> nodeToRootPathReturnNode(Node node, int data) {
+        if (node == null) {
+            return new ArrayList<>();
+        }
+        if (node.data == data) {
+            ArrayList<Node> list = new ArrayList<>();
+            list.add(node);
+            return list;
+        }
+        ArrayList<Node> leftList = nodeToRootPathReturnNode(node.left, data);
+        if (leftList.size() != 0) {
+            leftList.add(node);
+            return leftList;
+        }
+        ArrayList<Node> rightList = nodeToRootPathReturnNode(node.right, data);
+        if (rightList.size() != 0) {
+            rightList.add(node);
+            return rightList;
+        }
+        return new ArrayList<>();
+    }
+
+    //Method 2 Node to root path
+    public ArrayList<Integer> path;
+
+    public boolean nodeToRootPathMethod2(Node node, int data) {
+        if (node == null) {
+            return false;
+        }
+        if (node.data == data) {
+            path.add(node.data);
+            return true;
+        }
+        boolean leftList = nodeToRootPathMethod2(node.left, data);
+        if (leftList) {
+            path.add(node.data);
+            return true;
+        }
+        boolean rightList = nodeToRootPathMethod2(node.right, data);
+        if (rightList) {
+            path.add(node.data);
+            return true;
+        }
+        return false;
+    }
+
+
+    //Print k level down all nodes
+    public void printKLevelDown(Node node, int k) {
+        if (node == null || k < 0) {
+            return;
+        }
+        if (k == 0) {
+            System.out.println(node.data);
+        }
+        printKLevelDown(node.left, k - 1);
+        printKLevelDown(node.right, k - 1);
+    }
+
+
+    // Print k nodes away from given node in binary tree
+    public void printKNodesAwayFromGivenNode(Node node, int data, int k) {
+        ArrayList<Node> path = nodeToRootPathReturnNode(node, data);
+        printKLevelDown(path.get(0), k);
+        for (int i = 1; i < path.size(); i++) {
+            Node prev = path.get(i - 1);
+            Node curr = path.get(i);
+
+            if (i < k) {
+                if (prev == curr.left) {
+                    printKLevelDown(curr.right, k - i - 1);
+                } else {
+                    printKLevelDown(curr.left, k - i - 1);
+                }
+            } else if (i == k) {
+                System.out.println(curr.data);
+            } else {
+                break;
+            }
         }
     }
 }
