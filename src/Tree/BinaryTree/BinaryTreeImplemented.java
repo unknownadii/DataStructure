@@ -1,5 +1,7 @@
 package Tree.BinaryTree;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTreeImplemented {
@@ -135,5 +137,78 @@ public class BinaryTreeImplemented {
         int rh = height(node.right);
         int th = Math.max(lh, rh) + 1;
         return th;
+    }
+
+    //Traversal (pre ,in and post)
+    public void traversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.data + " In Pre Order");
+        traversal(node.left);
+        System.out.println(node.data + " In InOrder");
+        traversal(node.right);
+        System.out.println(node.data + " In Post Order");
+    }
+
+    //Iterative Traversal (pre ,in and post)
+    public void iterativetraversal(Node node) {
+        Pair rtp = new Pair(node, 1);
+        Stack<Pair> st = new Stack<>();
+        st.push(rtp);
+
+        String pre = "";
+        String post = "";
+        String in = "";
+        while (st.size() > 0) {
+            Pair top = st.peek();
+            if (top.state == 1) {
+                pre += top.node.data + " ";
+                top.state++;
+
+                if (top.node.left != null) {
+                    Pair lp = new Pair(top.node.left, 1);
+                    st.push(lp);
+                }
+            } else if (top.state == 2) {
+                in += top.node.data + " ";
+                top.state++;
+
+                if (top.node.right != null) {
+                    Pair rp = new Pair(top.node.right, 1);
+                    st.push(rp);
+                }
+            } else {
+                post += top.node.data + " ";
+                top.state++;
+
+                st.pop();
+            }
+        }
+
+        System.out.println(pre);
+        System.out.println(in);
+        System.out.println(post);
+    }
+
+    //Level Order Traversal
+    public void levelOrderTraversal(Node node) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        while (queue.size() > 0) {
+            //Adding Tree children Node in Queue
+            int qsize = queue.size();
+            for (int i = 0; i < qsize; i++) {
+                node = queue.remove();
+                System.out.print(node.data + " ");
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            System.out.println();
+        }
     }
 }
