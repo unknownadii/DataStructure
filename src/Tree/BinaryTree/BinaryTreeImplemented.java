@@ -449,4 +449,17 @@ public class BinaryTreeImplemented {
         printAllSingleChildNode2(node.right,node);
     }
 
+
+    //Tilt Of Binary Tree
+   public int tiltTree =0;
+    public int tilt(Node node) {
+        if (node==null) {
+            return 0;
+        }
+        int leftTilt = tilt(node.left);
+        int rightTilt = tilt(node.right);
+        int tSum = leftTilt + rightTilt + node.data;
+        tiltTree = Math.abs(leftTilt -rightTilt);
+        return tSum;
+    }
 }
