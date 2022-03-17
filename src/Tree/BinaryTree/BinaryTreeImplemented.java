@@ -69,7 +69,6 @@ public class BinaryTreeImplemented {
     }
 
     //Display Binary Tree
-
     public void display(Node node) {
         if (node == null) {
             return;
@@ -81,5 +80,60 @@ public class BinaryTreeImplemented {
         System.out.println(str);
         display(node.left);
         display(node.right);
+    }
+
+    //Size
+    public int size(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftSize = size(node.left);
+        int rightSize = size(node.right);
+        int totalSize = leftSize + rightSize + 1;
+        return totalSize;
+    }
+
+    //Maximum Node
+    public int max(Node node) {
+        if (node == null) {
+            return Integer.MIN_VALUE;
+        }
+        int maxLeft = max(node.left);
+        int maxRight = max(node.right);
+        int max = Math.max(node.data, Math.max(maxLeft, maxRight));
+        return max;
+    }
+
+    //Minimum Node
+    public int min(Node node) {
+        if (node == null) {
+            return Integer.MAX_VALUE;
+        }
+        int minLeft = min(node.left);
+        int minRight = min(node.right);
+        int min = Math.min(node.data, Math.max(minLeft, minRight));
+        return min;
+    }
+
+    //Sum
+    public int sum(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        int ls = sum(node.left);
+        int rs = sum(node.right);
+        int ts = ls + rs + node.data;
+        return ts;
+    }
+
+    //Height Of tree
+    public int height(Node node) {
+        if (node == null) {
+            return -1;
+        }
+        int lh = height(node.left);
+        int rh = height(node.right);
+        int th = Math.max(lh, rh) + 1;
+        return th;
     }
 }
