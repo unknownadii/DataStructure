@@ -263,4 +263,38 @@ public class BinarySearchTreeImplemented {
             return node.data;
         }
     }
+
+    //Print all the node with comes in range low-high
+    public void printAllNodeInRange(Node node, int low, int high) {
+        if (node == null) {
+            return;
+        }
+        if (low < node.data && high < node.data) {
+            printAllNodeInRange(node.left, low, high);
+        } else if (low > node.data && high > node.data) {
+            printAllNodeInRange(node.right, low, high);
+        } else {
+            printAllNodeInRange(node.left, low, high);
+            System.out.print(node.data +" ");
+            printAllNodeInRange(node.right, low, high);
+        }
+    }
+
+    // Or use In-Order if you want to print it in ascending order
+    public void printAllNodeInRange2(Node node, int low, int high) {
+        if (node == null) {
+            return;
+        }
+        if (node.data >=low && node.data <= high) {
+            System.out.print(node.data +" ");
+        }
+        printAllNodeInRange2(node.left, low, high);
+        /*
+        Do this if you want to print it in ascending order and remove upper if if-condition
+          if (node.data >=low && node.data <= high) {
+            System.out.print(node.data +" ");
+        }
+         */
+        printAllNodeInRange2(node.right, low, high);
+    }
 }
