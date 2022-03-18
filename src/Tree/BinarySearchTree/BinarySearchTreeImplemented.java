@@ -1,5 +1,10 @@
 package Tree.BinarySearchTree;
 
+import Tree.BinaryTree.BinaryTreeImplemented;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class BinarySearchTreeImplemented {
 
     public class Node {
@@ -83,6 +88,7 @@ public class BinarySearchTreeImplemented {
         }
     }
 
+
     //find
     public boolean find(Node node, int data) {
         if (node == null) {
@@ -96,6 +102,47 @@ public class BinarySearchTreeImplemented {
             return true;
         }
     }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------Traversal---------------------------------------------------------------------------------------------------------------
+
+    //Traversal (pre ,in and post)
+    public void traversal(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.data + " In Pre Order");
+        traversal(node.left);
+        System.out.println(node.data + " In InOrder");
+        traversal(node.right);
+        System.out.println(node.data + " In Post Order");
+    }
+
+    //Level Order Traversal
+    public void levelOrderTraversal(Node node) {
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+        while (queue.size() > 0) {
+            //Adding Tree children Node in Queue
+            int qsize = queue.size();
+            for (int i = 0; i < qsize; i++) {
+                node = queue.remove();
+                System.out.print(node.data + " ");
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------Questions---------------------------------------------------------------------------------------------------------------
 
     //Add A Node
     public Node add(Node node, int data) {
@@ -158,5 +205,46 @@ public class BinarySearchTreeImplemented {
                 return node;
             }
         }
+    }
+
+    //Print in descending Order (It will be done will the help of Reverse In-order traversal)
+    public void printNodeInDescendingOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        printNodeInDescendingOrder(node.right);
+
+        System.out.print(node.data + " ");
+
+        printNodeInDescendingOrder(node.left);
+    }
+
+    //Print in ascending Order (It will be done will the help of just simple In-order traversal)
+    public void printNodeInAscendingOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        printNodeInAscendingOrder(node.left);
+
+        System.out.print(node.data + " ");
+
+        printNodeInAscendingOrder(node.right);
+    }
+
+
+    int sum = 0;
+
+    public void replaceNodesWithSumOfNodes(Node node) {
+        if (node == null) {
+            return;
+        }
+        replaceNodesWithSumOfNodes(node.right);
+
+        //replacing node data with sum of nodes with is greater than that node
+        int nodeData = node.data;
+        node.data = sum;
+        sum += nodeData;
+
+        replaceNodesWithSumOfNodes(node.left);
     }
 }
