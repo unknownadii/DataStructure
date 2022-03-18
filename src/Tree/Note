@@ -1,3 +1,5 @@
 1. Do the diameter question is mandatory in all type of tree.
     while in bst and in binary tree it is same method to find diameter.
 2. LCA (lowest common ancestor)
+3.  "Imp" concept revision Question Must do :-
+      a:- PrintThePairWhosSumIsEqualsToTarget in BST

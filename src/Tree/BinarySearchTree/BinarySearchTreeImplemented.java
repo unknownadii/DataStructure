@@ -3,7 +3,9 @@ package Tree.BinarySearchTree;
 import Tree.BinaryTree.BinaryTreeImplemented;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class BinarySearchTreeImplemented {
 
@@ -275,7 +277,7 @@ public class BinarySearchTreeImplemented {
             printAllNodeInRange(node.right, low, high);
         } else {
             printAllNodeInRange(node.left, low, high);
-            System.out.print(node.data +" ");
+            System.out.print(node.data + " ");
             printAllNodeInRange(node.right, low, high);
         }
     }
@@ -285,8 +287,8 @@ public class BinarySearchTreeImplemented {
         if (node == null) {
             return;
         }
-        if (node.data >=low && node.data <= high) {
-            System.out.print(node.data +" ");
+        if (node.data >= low && node.data <= high) {
+            System.out.print(node.data + " ");
         }
         printAllNodeInRange2(node.left, low, high);
         /*
@@ -296,5 +298,142 @@ public class BinarySearchTreeImplemented {
         }
          */
         printAllNodeInRange2(node.right, low, high);
+    }
+
+
+    //Print The Pair who's Sum Is Equals To Target and print lowest part of in ascending order.
+
+    //Method 1
+    public void printThePairWhosSumIsEqualsToTarget(Node root, Node node, int target) {
+        if (node == null) {
+            return;
+        }
+        // we have print the lowest in ascending order so we will be using in-Order
+        printThePairWhosSumIsEqualsToTarget(root, node.left, target);
+
+        int numberToSearch = target - node.data;
+        // ex:- target =100 ,node.data= 30 so that numberToSearch = 100 - 30 = 70
+        // and now search that term in tree if it exists then  print the "node.data- numberToSearch"
+
+        if (numberToSearch > node.data) /* this condition is for avoiding situation like 30-70 and 70-30; */ {
+            if (find(root, numberToSearch)) {
+                System.out.println(node.data + "-" + numberToSearch);
+            }
+        }
+        printThePairWhosSumIsEqualsToTarget(root, node.right, target);
+    }
+
+    //Method 2 By ArrayListMethod
+
+    public void printThePairWhosSumIsEqualsToTarget2(Node node, int target) {
+        ArrayList<Integer> list = new ArrayList<>();
+        helperPrintThePairWhosSumIsEqualsToTarget2(node, list);
+
+        int i = 0, j = list.size() - 1;
+        while (i < j) {
+            int left = list.get(i);
+            int right = list.get(j);
+            if (left + right < target) {
+                //if this condition is true then do i++ to search for greater value
+                // for addition with j so that it become equal to target
+                i++;
+            } else if (left + right > target) {
+                //if this condition is true then do j++ to search for smaller value
+                // for addition with i so that it become equal to target
+                j--;
+            } else {
+                // if left + right == target
+                System.out.println(left + "-" + right);
+                i++;
+                j--;
+            }
+        }
+    }
+
+    private void helperPrintThePairWhosSumIsEqualsToTarget2(Node node, ArrayList<Integer> list) {
+        if (node == null) {
+            return;
+        }
+        helperPrintThePairWhosSumIsEqualsToTarget2(node.left, list);
+        list.add(node.data);
+        helperPrintThePairWhosSumIsEqualsToTarget2(node.right, list);
+    }
+
+    //Method 3 By Iterative In-Order and Reverse Iterative In-Order
+
+    private class PrintThePair {
+        Node node;
+        int state = 0;
+
+        public PrintThePair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
+    }
+
+    public void printThePairWhosSumIsEqualsToTargetBestApproach(Node node, int target) {
+        Stack<PrintThePair> leftStack = new Stack<>();
+        Stack<PrintThePair> rightStack = new Stack<>();
+
+        leftStack.push(new PrintThePair(node, 0));
+        rightStack.push(new PrintThePair(node, 0));
+
+        Node left = getNextFromNormalInOrder(leftStack);
+        Node right = getNextFromReverseInOrder(rightStack);
+
+        while (left.data < right.data) {
+            if (left.data + right.data < target) {
+                left = getNextFromNormalInOrder(leftStack);
+            } else if (left.data + right.data < target) {
+                right = getNextFromReverseInOrder(rightStack);
+            } else {
+                System.out.println(left.data + "-" + right.data);
+                left = getNextFromNormalInOrder(leftStack);
+                right = getNextFromReverseInOrder(rightStack);
+            }
+        }
+
+    }
+
+    private Node getNextFromNormalInOrder(Stack<PrintThePair> st) {
+        while (st.size() > 0) {
+            PrintThePair top = st.peek();
+            if (top.state == 0) {
+                if (top.node.left != null) {
+                    st.push(new PrintThePair(top.node.left, 0));
+                }
+                top.state++;
+            } else if (top.state == 1) {
+                if (top.node.right != null) {
+                    st.push(new PrintThePair(top.node.right, 0));
+                }
+                top.state++;
+                return top.node;
+            } else {
+                st.pop();
+            }
+        }
+        return null;
+    }
+
+    private Node getNextFromReverseInOrder(Stack<PrintThePair> st) {
+        while (st.size() > 0) {
+            PrintThePair top = st.peek();
+            if (top.state == 0) {
+                if (top.node.right != null) {
+                    st.push(new PrintThePair(top.node.right, 0));
+                }
+                top.state++;
+            } else if (top.state == 1) {
+                if (top.node.left != null) {
+                    st.push(new PrintThePair(top.node.left, 0));
+                }
+                top.state++;
+                return top.node;
+            } else {
+                st.pop();
+            }
+        }
+        return null;
     }
 }
