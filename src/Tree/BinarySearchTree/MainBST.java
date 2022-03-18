@@ -29,7 +29,5 @@ public class MainBST {
         System.out.println(obj.max(root));
         System.out.println(obj.min(root));
         System.out.println(obj.find(root,7));
-
-
     }
 }

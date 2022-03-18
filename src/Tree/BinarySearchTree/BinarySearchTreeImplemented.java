@@ -96,4 +96,67 @@ public class BinarySearchTreeImplemented {
             return true;
         }
     }
+
+    //Add A Node
+    public Node add(Node node, int data) {
+        if (node == null) {
+            return new Node(data, null, null);
+        }
+        if (data < node.data) {
+            //if data is less than node.data than go to left child node tell him to
+            // add the data and in return attach the left node result with Parent node.left
+            Node leftNode = add(node.left, data);
+            // when any node addition is takes place then all attached nodes go disturb so reattach the node with the parent node
+            node.left = leftNode;
+            return node;
+        } else if (data > node.data) {
+            Node rightNode = add(node.right, data);
+            node.right = rightNode;
+            return node;
+        } else {
+            return node;
+        }
+    }
+
+    //Removing A Node
+    public Node remove(Node node, int data) {
+        if (node == null) {
+            return null;
+        }
+        if (data < node.data) {
+            Node removeLeft = remove(node.left, data);
+            node.left = removeLeft;
+            return node;
+        } else if (data > node.data) {
+            Node removeRight = remove(node.right, data);
+            node.right = removeRight;
+            return node;
+        }
+        // node.data == data
+        else {
+            // when node has no child node
+            if (node.left == null && node.right == null) {
+                return null;
+            } else if (node.left == null) {
+                // when it has right child
+                return node.right;
+            } else if (node.right == null) {
+                //w when it has left child only
+                return node.left;
+            } else {
+                // when it has all two child
+
+                // find the max node in left child
+                int maxLeft = max(node.left);
+
+                //then remove that max node
+                Node removesMax = remove(node.left, maxLeft);
+
+                // then add it in place of node that is to be deleted
+                node.data = removesMax.data; // Or node.data = maxLeft
+                node.left = removesMax;
+                return node;
+            }
+        }
+    }
 }
