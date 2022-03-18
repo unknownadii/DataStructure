@@ -232,6 +232,7 @@ public class BinarySearchTreeImplemented {
     }
 
 
+    //Replace the node with sum of the node which is greater than that node if not then with replace with 0
     int sum = 0;
 
     public void replaceNodesWithSumOfNodes(Node node) {
@@ -246,5 +247,20 @@ public class BinarySearchTreeImplemented {
         sum += nodeData;
 
         replaceNodesWithSumOfNodes(node.left);
+    }
+
+
+    //Lowest Common Ancestor
+    public int lca(Node node, int num1, int num2) {
+        if (num1 < node.data && num2 < node.data) {
+            //move to left side
+            return lca(node.left, num1, num2);
+        } else if (num1 > node.data && num2 > node.data) {
+            // move to right side
+            return lca(node.right, num1, num2);
+        } else {
+            //this is the condition when it will find the lca
+            return node.data;
+        }
     }
 }
