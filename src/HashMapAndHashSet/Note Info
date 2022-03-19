@@ -1,0 +1,33 @@
+Difference between HashMap and HashSet
+
+HashSet is an implementation of Set Interface which does not allow duplicate value. The main thing is, objects that are stored in HashSet must override equals() for check for equality, and hashCode() methods for no duplicate value are stored in our set. HashMap is an implementation of Map Interface, which maps a key to value. Duplicate keys are not allowed in a Map. Basically, Map Interface has two implementation classes HashMap and TreeMap the main difference is TreeMap maintains an order of the objects but HashMap will not.HashMap allows null values and null keys. Both HashSet and HashMap are not synchronized.
+
+Now let us formulate the difference between HashMap and HashSet as provided in a tabular manner below as follows:
+
+                               HashSet 	                                     HashMap
+.Implements 	                  Set interface                                 Map interface
+.Duplicates	                     No                             	Yes duplicates values are allowed but no duplicate key is allowed
+.Dummy values 	                 Yes 	                                              No
+.Objects required during -
+-an add operation	            1	                                          2
+.Adding and storing mechanism 	HashMap object 	                               Hashing technique
+.Speed	              It is comparatively slower than HashMap	               It is comparatively faster than HashSet because of hashing technique has been used here.
+.Null 	                   Have a single null value 	                 Single null key and any number of null values
+.Insertion Method	               Add()	                                       Put()
+
+
+
+* :-
+
+.Implementation: HashMap implements Map interface and HashSet implements Set interface.
+.Duplicates: HashSet doesn’t allow duplicate values. HashMap stores key, value pairs and it does not allow duplicate keys. If the key is duplicate then the old key is replaced with the new value.
+.Number of objects during storing objects: HashMap requires two objects put(K key, V Value) to add an element to HashMap object, while HashSet requires only one object add(Object o)
+.Dummy value: In HashMap no concept of dummy value,
+.HashSet internally uses HashMap to add elements. In HashSet, the argument passed in add(Object) method serves as key K. Java internally associates dummy value for each value passed in add(Object) method.
+.Storing or Adding mechanism: HashMap internally uses hashing to store or add objects, HashSet internally uses HashMap object to store or add the objects.
+.Speed: HashSet is slower than HashMap.
+.Insertion HashMap uses the put() method for storing data, While in HashSet use add() method for add or storing data.
+.Let us wrap up with an example
+
+HashSet is a set, e.g. {1, 2, 3, 4, 5, 6, 7},
+HashMap is a key -> value pair(key to value) map, e.g. {a -> 1, b -> 2, c -> 2, d -> 1}
