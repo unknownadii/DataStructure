@@ -1,3 +1,5 @@
+------------------------Pre Build Hash map----------------------------------------------------
+
 Difference between HashMap and HashSet
 
 HashSet is an implementation of Set Interface which does not allow duplicate value. The main thing is, objects that are stored in HashSet must override equals() for check for equality, and hashCode() methods for no duplicate value are stored in our set. HashMap is an implementation of Map Interface, which maps a key to value. Duplicate keys are not allowed in a Map. Basically, Map Interface has two implementation classes HashMap and TreeMap the main difference is TreeMap maintains an order of the objects but HashMap will not.HashMap allows null values and null keys. Both HashSet and HashMap are not synchronized.
@@ -31,3 +33,132 @@ Now let us formulate the difference between HashMap and HashSet as provided in a
 
 HashSet is a set, e.g. {1, 2, 3, 4, 5, 6, 7},
 HashMap is a key -> value pair(key to value) map, e.g. {a -> 1, b -> 2, c -> 2, d -> 1}
+
+
+
+
+-------------------------------------HashMap Implemented-----------------------------------------------------------------------------------
+
+Hashing
+
+* -> Question: What is hashCode?
+
+Answer:
+The hashcode of a Java Object is simply a number, it is 32-bit signed int,
+that allows an object to be managed by a hash-based data structure.
+We know that hash code is an unique id number allocated to an object by JVM.
+But actually speaking, Hash code is not an unique number for an object.
+If two objects are equals then these two objects should return same hash code.
+So we have to implement hashcode() method of a class in such way that if two objects are equals,
+ie compared by equal() method of that class, then those two objects must return same hash code.
+If you are overriding hashCode you need to override equals method also.
+
+
+Hashing is a process of converting an object into integer form by using the method hashCode().
+ Its necessary to write hashCode() method properly for better performance of HashMap.
+ Here I am taking key of my own class so that I can override hashCode() method to show different scenarios.
+ My Key class is
+
+
+//custom Key class to override hashCode()
+// and equals() method
+class Key
+{
+  String key;
+  Key(String key)
+  {
+    this.key = key;
+  }
+
+  @Override
+  public int hashCode()
+  {
+     return (int)key.charAt(0);
+  }
+
+  @Override
+  public boolean equals(Object obj)
+  {
+    return key.equals((String)obj);
+  }
+}
+Here overrided hashCode() method returns the first character’s ASCII value as hash code.
+So whenever the first character of key is same, the hash code will be same.
+You should not approach this criteria in your program. It is just for demo purpose.
+As HashMap also allows null key, so hash code of null will always be 0.
+
+
+* hashCode() method
+
+hashCode() method is used to get the hash Code of an object.
+hashCode() method of object class returns the memory reference of object in integer form.
+Definition of hashCode() method is public native hashCode().
+It indicates the implementation of hashCode() is native because there is not any direct method in java to fetch the reference of object.
+It is possible to provide your own implementation of hashCode().
+In HashMap, hashCode() is used to calculate the bucket and therefore calculate the index.
+
+
+* equals() method
+
+equals method is used to check that 2 objects are equal or not. This method is provided by Object class.
+You can override this in your class to provide your own implementation.
+HashMap uses equals() to compare the key whether they are equal or not.
+If equals() method return true, they are equal otherwise not equal.
+
+
+* Buckets
+
+A bucket is one element of HashMap array. It is used to store nodes.
+Two or more nodes can have the same bucket. In that case link list structure is used to connect the nodes.
+Buckets are different in capacity
+
+
+
+What is a hash code in Java?
+
+A hash code is an integer value that is associated with each object in Java.
+Its main purpose is to facilitate hashing in hash tables, which are used by data structures like HashMap.
+
+The hashCode() method
+In Java, the hash code value of an object is returned by calling the hashCode() method, on that object.
+This method is implemented, by default, in the Object class and is, therefore, inherited by user-defined classes as well.
+
+This method returns the same integer value (when called on the same object during the same instance of a Java application),
+ provided that no data used by the equals() method is modified.
+
+When hashCode() is called on two separate objects (which are equal according to the equals() method)
+it returns the same hash code value. However, if it is called on two unequal objects,
+it will not necessarily return different integer values.
+
+
+Code
+The sample code below prints the hash codes of the same ​and different variables:
+
+class Hash{
+    public static void main(String[] args){
+        String a = "200";
+        String b = "200";
+
+        if(a.equals(b)){
+            System.out.println("Equal variables:");
+            System.out.println(a.hashCode() + "\n" + b.hashCode());
+        }
+
+        String c = "10";
+        String d = "50";
+
+        if(!c.equals(d)){
+            System.out.println("\nUn-equal variables:");
+            System.out.println(c.hashCode() + "\n" + d.hashCode());
+        }
+    }
+}
+
+Output
+Equal variables:
+49586
+49586
+
+Un-equal variables:
+1567
+1691

@@ -1,4 +1,4 @@
-package HashMapAndHashSet;
+package HashMapAndHashSet.PreBuildHashmap;
 
 import java.util.HashMap;
 import java.util.Set;
