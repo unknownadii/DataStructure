@@ -50,11 +50,11 @@ public class MergeKSortedLists {
         ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
         for (int i = 0; i < k; i++) {
             ArrayList<Integer> list = new ArrayList<>();
-            System.out.println("Enter length for list "+ i+1);
+            System.out.println("Enter length for list "+ (i+1));
             int n = Integer.parseInt(br.readLine());
             System.out.println("Enter values for " + i + "th list");
-            String[] elements = br.readLine().split(" ");
-            for (int j = 0; j < n; j++) {
+            String[] elements = br.readLine().split(",");
+            for (int j = 0; j < elements.length; j++) {
                 list.add(Integer.parseInt(elements[j]));
             }
             lists.add(list);
