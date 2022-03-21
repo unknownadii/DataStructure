@@ -1,13 +1,28 @@
 package HeapAndPriorityQueue.GenricHeap;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
+// if no parameter is passed during object creation of GenricPriorityQueueUsingHeap
+// then default constuctor will call and comparable will implement
+
+// But parameter is passed then Comparator Type will call
 class GenricPriorityQueueUsingHeap<T> {
 
     private ArrayList<T> data;
+    Comparator<T> comparator;
 
+    //Constructor GenricPriorityQueueUsingHeap
     public GenricPriorityQueueUsingHeap() {
         data = new ArrayList<>();
+        comparator = null;
+    }
+
+    //Constructor GenricPriorityQueueUsingHeap with parameter
+    public GenricPriorityQueueUsingHeap(Comparator comparator) {
+        data = new ArrayList<>();
+        comparator = comparator;
     }
 
     //Add Function
@@ -18,20 +33,29 @@ class GenricPriorityQueueUsingHeap<T> {
 
     //Is i smaller then j
     private boolean isSmaller(int i, int j) {
-        //we are using Comparable because we don't the type of value that is stored on  ith and jth index.
-        //by using Comaparble we comapare two elements with compareTo() and return the response in :-
-        // +ve = if number is greater
-        // -ve if the is smaller
-        // 0 if both are equal
 
-        Comparable ith = (Comparable) data.get(i);
-        Comparable jth = (Comparable) data.get(j);
+        if (comparator == null) {
+            //Comparable
+            Comparable ith = (Comparable) data.get(i);
+            Comparable jth = (Comparable) data.get(j);
 
-        if (ith.compareTo(jth) < 0) {
-            // less than zero means -ve
-            return true;
+            if (ith.compareTo(jth) < 0) {
+                // less than zero means -ve
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            //Comparator
+            T ith = data.get(i);
+            T jth = data.get(j);
+
+            if (comparator.compare(ith, jth) < 0) {
+                // less than zero means -ve
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
@@ -108,6 +132,7 @@ class GenricPriorityQueueUsingHeap<T> {
 
 class Main {
 
+    //Comparable
     static class Students implements Comparable<Students> {
         int rollNo;
         int marks;
@@ -128,21 +153,148 @@ class Main {
         }
     }
 
+    //Comparator
+    private static class StudentsSortOnBasisOfMarks implements Comparator<Students> {
+        @Override
+        public int compare(Students s1, Students s2) {
+            return s1.marks - s2.marks;
+        }
+    }
+
+    private static class StudentsSortOnBasisOfHeight implements Comparator<Students> {
+        @Override
+        public int compare(Students s1, Students s2) {
+            return s1.height - s2.height;
+        }
+    }
+
 
     public static void main(String[] args) {
-        GenricPriorityQueueUsingHeap<Students> obj = new GenricPriorityQueueUsingHeap();
 
-        obj.add(new Students(3, 5, 170));
-        obj.add(new Students(4, 6, 180));
-        obj.add(new Students(2, 1, 175));
-        obj.add(new Students(1, 4, 172));
-        obj.add(new Students(8, 3, 160));
-        obj.add(new Students(5, 9, 165));
-        obj.add(new Students(10, 7, 140));
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------Comparable--------------------------------------------------------------------------------
 
+        //comparable
+        PriorityQueue<Students> priorityQueue = new PriorityQueue<>();
+
+        priorityQueue.add(new Students(3, 5, 170));
+        priorityQueue.add(new Students(4, 6, 180));
+        priorityQueue.add(new Students(2, 1, 175));
+        priorityQueue.add(new Students(1, 4, 172));
+        priorityQueue.add(new Students(8, 3, 160));
+        priorityQueue.add(new Students(5, 9, 165));
+        priorityQueue.add(new Students(10, 7, 140));
+
+        //Displaying by traversing in queue
+        System.out.println("Just Displaying All Content");
+        for (Students val : priorityQueue) {
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+        }
+
+        /* Method 2 Displaying
+
+        while (priorityQueue.size() > 0) {
+            System.out.println(priorityQueue.peek());
+            priorityQueue.remove();
+        }
+
+         */
+
+        System.out.println();
+        //Displaying in Ascending Order on the bases of Roll no when (this.rollno - o.rollno )
+        System.out.println("Displaying in Ascending Order on the bases of Roll no when (this.rollno - o.rollno )");
+        while (priorityQueue.size() > 0) {
+            Students val = priorityQueue.remove();
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+        }
+
+       /* Displaying in Descending Order on the bases of Roll no when (o.rollno - this.rollno)
+        System.out.println("Displaying in Descending  Order on the bases of Roll no when (this.rollno - o.rollno )");
+        while (priorityQueue.size() > 0) {
+            Students val = priorityQueue.remove();
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+        }
+        */
+      /*  Displaying in Descending Order on the bases of marks  when (o.marks - this.marks)
         System.out.println("Displaying in Descending Order on the bases of marks  when (o.marks - this.marks)");
-        while (obj.size() > 0) {
-            Students val = obj.removeValue();
+        while (priorityQueue.size() > 0) {
+            Students val = priorityQueue.remove();
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+         }
+
+       */
+
+        /*  Displaying in Ascending Order on the bases of marks  when ( this.marks-o.marks)
+        System.out.println("Displaying in Descending Order on the bases of marks  when (o.marks - this.marks)");
+        while (priorityQueue.size() > 0) {
+            Students val = priorityQueue.remove();
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+        }
+        */
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------Comparator--------------------------------------------------------------------------------
+
+
+        //Comparator Comparison on Basis of Marks
+        PriorityQueue<Students> priorityQueueMComparator = new PriorityQueue<>(new StudentsSortOnBasisOfMarks());
+
+        priorityQueueMComparator.add(new Students(3, 5, 170));
+        priorityQueueMComparator.add(new Students(4, 6, 180));
+        priorityQueueMComparator.add(new Students(2, 1, 175));
+        priorityQueueMComparator.add(new Students(1, 4, 172));
+        priorityQueueMComparator.add(new Students(8, 3, 160));
+        priorityQueueMComparator.add(new Students(5, 9, 165));
+        priorityQueueMComparator.add(new Students(10, 7, 140));
+
+        //  Displaying in Ascending Order on the bases of marks  (s1.marks - s2.marks);
+        System.out.println("Displaying in Ascending Order on the bases of marks  when (s1.marks - s2.marks)");
+        while (priorityQueueMComparator.size() > 0) {
+            Students val = priorityQueueMComparator.remove();
+            System.out.print(" RollNo :- " + val.rollNo);
+            System.out.print(" Marks :- " + val.marks);
+            System.out.print(" Height:- " + val.height);
+            System.out.println();
+        }
+
+
+        //Comparator Comparison on Basis of Height
+        PriorityQueue<Students> priorityQueueHComparator = new PriorityQueue<>(new StudentsSortOnBasisOfHeight());
+
+        priorityQueueHComparator.add(new Students(3, 5, 170));
+        priorityQueueHComparator.add(new Students(4, 6, 180));
+        priorityQueueHComparator.add(new Students(2, 1, 175));
+        priorityQueueHComparator.add(new Students(1, 4, 172));
+        priorityQueueHComparator.add(new Students(8, 3, 160));
+        priorityQueueHComparator.add(new Students(5, 9, 165));
+        priorityQueueHComparator.add(new Students(10, 7, 140));
+
+
+        System.out.println();
+        //  Displaying in Ascending Order on the bases of Height  when (s1.height - s2.height;)
+        System.out.println("Displaying in Ascending Order on the bases of Height  when (s1.height - s2.height)");
+        while (priorityQueueHComparator.size() > 0) {
+            Students val = priorityQueueHComparator.remove();
             System.out.print(" RollNo :- " + val.rollNo);
             System.out.print(" Marks :- " + val.marks);
             System.out.print(" Height:- " + val.height);
