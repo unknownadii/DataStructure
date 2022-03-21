@@ -2,7 +2,7 @@ package HeapAndPriorityQueue;
 
 import java.util.ArrayList;
 
-public class PriorityQueueUsingHeap {
+class PriorityQueueUsingHeap {
 
     private ArrayList<Integer> data;
 
