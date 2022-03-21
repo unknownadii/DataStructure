@@ -1,4 +1,4 @@
-package HeapAndPriorityQueue;
+package HeapAndPriorityQueue.Implentation;
 
 import java.util.ArrayList;
 
