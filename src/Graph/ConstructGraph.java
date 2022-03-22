@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class ConstructGraph {
     public ArrayList<Edges>[] graph;
 
-    private class Edges {
-        int current;
-        int neighbour;
-        int weight;
+    public class Edges {
+       public int current;
+        public  int neighbour;
+        public int weight;
 
         public Edges(int current, int neighbour, int weight) {
             this.current = current;
