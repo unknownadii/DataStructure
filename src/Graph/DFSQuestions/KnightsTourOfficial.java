@@ -1,4 +1,4 @@
-package Graph.Questions;
+package Graph.DFSQuestions;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,9 +1,8 @@
-package Graph.Questions;
+package Graph.DFSQuestions;
 
 import Graph.ConstructGraph;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /*
 1. You are given a number n (representing the number of students). Each student will have an id

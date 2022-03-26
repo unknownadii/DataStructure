@@ -1,4 +1,4 @@
-package Graph.Questions;
+package Graph.DFSQuestions;
 
 public class CountNumberOfIslands {
     public static void main(String[] args) {

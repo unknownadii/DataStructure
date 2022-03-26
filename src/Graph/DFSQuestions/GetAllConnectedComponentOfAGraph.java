@@ -1,4 +1,4 @@
-package Graph.Questions;
+package Graph.DFSQuestions;
 
 import Graph.ConstructGraph;
 
