@@ -27,7 +27,8 @@ Sample Output
  */
 public class PerfectFriends {
 
-    public static ArrayList<ArrayList<Integer>> getConnectedComponent(ArrayList<ConstructGraph.Edges>[] graph, boolean[] visited, int vertex) {
+    public static ArrayList<ArrayList<Integer>> getConnectedComponent(ArrayList<ConstructGraph.Edges>[] graph,
+                                                                      boolean[] visited, int vertex) {
         ArrayList<ArrayList<Integer>> allComponents = new ArrayList<>();
         for (int i = 0; i < vertex; i++) {
             if (!visited[i]) {
