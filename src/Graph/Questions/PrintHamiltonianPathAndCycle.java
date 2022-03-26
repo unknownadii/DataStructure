@@ -23,7 +23,7 @@ public class PrintHamiltonianPathAndCycle {
         // we are using visited to avoid the condition of cyclic graph in which it will rotate infinitely
         HashSet<Integer> visited = new HashSet<>();
         int source = 0;
-
+        hamiltonianPathAndCycle(obj.graph,source,source,visited,source+" ");
     }
 
     public static void hamiltonianPathAndCycle(ArrayList<ConstructGraph.Edges>[] graph, int osrc, int src, HashSet<Integer> visited, String psf) {
@@ -49,7 +49,7 @@ public class PrintHamiltonianPathAndCycle {
         visited.add(src);
         for (ConstructGraph.Edges e : graph[src]) {
             if (!visited.contains(e.neighbour)) {
-                hamiltonianPathAndCycle(graph, osrc, e.neighbour, visited, psf + e.neighbour);
+                hamiltonianPathAndCycle(graph, osrc, e.neighbour, visited, psf + e.neighbour+" ");
             }
         }
         visited.remove(src);
