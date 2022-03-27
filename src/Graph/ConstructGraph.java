@@ -52,7 +52,7 @@ public class ConstructGraph {
         graph[source].add(new Edges(source, destination, weight));
     }
 
-    //Construct UnDirect-Graph
+    //Construct Direct-Graph
     public void constructDirectedGraph(int source, int destination) {
         int weight = 1; // by default if weight is not given
         graph[source].add(new Edges(source, destination, weight));
