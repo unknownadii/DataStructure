@@ -18,7 +18,7 @@ public class SearchInRowWiseAndColumnWiseSorted2DArray {
                 {10, 20, 0, 40},
                 {15, 25, 35, 45},
                 {28, 29, 37, 49},
-                {33, 34, 38, 50}
+                {33, 34, 38,50}
         };
         System.out.println(Arrays.toString(search(arr, 45)));
 
